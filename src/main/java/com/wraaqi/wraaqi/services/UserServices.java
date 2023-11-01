@@ -2,6 +2,7 @@ package com.wraaqi.wraaqi.services;
 
 import com.wraaqi.wraaqi.models.User;
 import com.wraaqi.wraaqi.repositories.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -17,23 +18,19 @@ public class UserServices {
         this.userRepository = userRepository;
     }
 
-    public List<User> hello(){
+    public List<User> getAllUsers(){
         return userRepository.findAll();
     }
 
-    public void addNewUser(User user){
-        Optional<User> userByName =  userRepository.findUserByName(user.getName());
-        if(userByName.isPresent()){
-            throw new IllegalStateException("email taken");
-        }
-        userRepository.save(user);
+    public User save(User user) {
+        return userRepository.save(user);
     }
 
-    public void deleteUser(Long userId) {
-        boolean exists = userRepository.existsById(userId);
-        if(!exists){
-            throw new IllegalStateException("User with Id "+ userId + " does not exists!");
-        }
-        userRepository.deleteById(userId);
+    public Optional<User> findById(Long id) {
+        return userRepository.findById(id);
+    }
+
+    public void delete(User user) {
+        userRepository.delete(user);
     }
 }

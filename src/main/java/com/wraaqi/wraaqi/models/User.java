@@ -1,40 +1,34 @@
 package com.wraaqi.wraaqi.models;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
-import java.time.Period;
 
 @Entity
-@Table
+@Table(name = "users")
 public class User {
     @Id
-    @SequenceGenerator(
-            name = "sequence_user",
-            sequenceName = "sequence_user",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "sequence_user"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "name")
     private String name;
-    private String profession;
-    @Transient
-    private Integer age;
-    private LocalDate dateOfBirth;
 
+    @Column(name = "email")
+    private String email;
 
-    // I don't understand why we need this!
-    // But I have added it because otherwise userConfig will show an error
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "role")
+    private String role;  // client ou personnel de l'agence
+
     public User() {
     }
 
-    public User(Long id, String name, String profession, LocalDate dateOfBirth) {
+    public User(Long id, String name, String email, String password, String role) {
         this.id = id;
         this.name = name;
-        this.profession = profession;
-        this.dateOfBirth = dateOfBirth;
+        this.email = email;
+        this.password = password;
+        this.role = role;
     }
 
     public Long getId() {
@@ -53,38 +47,27 @@ public class User {
         this.name = name;
     }
 
-    public String getProfession() {
-        return profession;
+    public String getEmail() {
+        return email;
     }
 
-    public void setProfession(String profession) {
-        this.profession = profession;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
+    public String getPassword() {
+        return password;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public Integer getAge() {
-        return Period.between(this.dateOfBirth, LocalDate.now()).getYears();
+    public String getRole() {
+        return role;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", profession='" + profession + '\'' +
-                ", age=" + age +
-                ", dateOfBirth=" + dateOfBirth +
-                '}';
+    public void setRole(String role) {
+        this.role = role;
     }
 }
