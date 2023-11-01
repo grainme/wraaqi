@@ -63,6 +63,16 @@ public class userController {
         response.put("deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
+
+    // check user by email
+    @GetMapping("/users/email/{email}")
+    public ResponseEntity<User> findUserByName(@PathVariable String email) {
+        User user = userService.findByEmail(email)
+                .orElseThrow(() -> new IllegalStateException("User not exist with email: " + email));
+
+        return ResponseEntity.ok(user);
+    }
+
 }
 
 
