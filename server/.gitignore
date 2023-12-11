@@ -17,12 +17,8 @@ target/
 .idea
 *.iws
 *.iml
-*.ipr
-<<<<<<< HEAD
+*.ipr 
 src/main/resources/application.properties
-=======
-application.properties
->>>>>>> ee551a99528a721423521439f3ea0356ca1d4490
 
 ### NetBeans ###
 /nbproject/private/
