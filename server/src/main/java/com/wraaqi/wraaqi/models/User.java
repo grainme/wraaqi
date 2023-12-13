@@ -7,9 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Inheritance(strategy=InheritanceType.JOINED)
 @DiscriminatorColumn(name="user_role")
@@ -22,8 +19,6 @@ public class User {
     private String firstname;
     private String lastname;
     private int age;
-    @Embedded
-    private Adresse adresse;
     private String email;
     private String password;
     private String role;
