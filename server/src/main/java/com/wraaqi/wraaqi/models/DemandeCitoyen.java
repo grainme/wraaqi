@@ -11,6 +11,6 @@ public class  DemandeCitoyen {
     private Long id ;
 
     @ManyToOne
-    private Citoyen citoyen;
+    private User citoyen;
 }
 
