@@ -1,29 +1,27 @@
 import {
-  ChatBubbleBottomCenterTextIcon,
+  DocumentCheckIcon, MegaphoneIcon, UserPlusIcon,
 } from "@heroicons/react/24/solid";
 
 export const featuresData = [
   {
-    color: "gray",
-    title: "Awarded Agency",
-    icon: ChatBubbleBottomCenterTextIcon,
+    color: "black",
+    title: "Légalisation",
+    icon: DocumentCheckIcon,
     description:
-      "Divide details about your product or agency work into parts. A paragraph describing a feature will be enough.",
+      "WRAAQI révolutionne cette démarche en introduisant la digitalisation avancée des signatures et la certification des copies .",
   },
   {
-    color: "gray",
-    title: "Free Revisions",
-    icon: ChatBubbleBottomCenterTextIcon,
+    color: "black",
+    title: "Demande d'inscription",
+    icon:  UserPlusIcon,
     description:
-      "Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious.",
-  },
+      "L'inscription sur WRAAQI, suite à une demande, simplifie le processus administratif. "  },
   {
-    color: "gray",
-    title: "Verified Company",
-    icon: ChatBubbleBottomCenterTextIcon,
+    color: "black",
+    title: " Réclamation",
+    icon: MegaphoneIcon,
     description:
-      "Write a few lines about each one. A paragraph describing a feature will be enough. Keep you user engaged!",
-  },
+      "Pour toute réclamation liée à des besoins administratifs, WRAAQI met à votre disposition un service our signaler tout problème rencontré"  },
 ];
 
 export default featuresData;

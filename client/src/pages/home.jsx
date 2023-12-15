@@ -10,7 +10,7 @@ import {
   Textarea,
   Checkbox,
 } from "@material-tailwind/react";
-import { FingerPrintIcon, UsersIcon } from "@heroicons/react/24/solid";
+import { QuestionMarkCircleIcon, UsersIcon } from "@heroicons/react/24/solid";
 import { PageTitle, Footer } from "@/widgets/layout";
 import { FeatureCard, TeamCard } from "@/widgets/cards";
 import { featuresData, teamData, contactData } from "@/data";
@@ -19,7 +19,7 @@ export function Home() {
   return (
     <>
       <div className="relative flex h-screen content-center items-center justify-center pt-16 pb-32">
-        <div className="absolute top-0 h-full w-full bg-[url('/img/background-3.png')] bg-cover bg-center" />
+        <div className="absolute top-0 h-full w-full bg-[url('/img/Casa.jpg')] bg-cover bg-center" />
         <div className="absolute top-0 h-full w-full bg-black/60 bg-cover bg-center" />
         <div className="max-w-8xl container relative mx-auto">
           <div className="flex flex-wrap items-center">
@@ -29,10 +29,14 @@ export function Home() {
                 color="white"
                 className="mb-6 font-black"
               >
-                Wraaqi, Ere de Digitalisation
+                WRAAQI :Nouvelle ère <br />
+                <span> la digitalisation des signatures et des copies conforms</span>
+
               </Typography>
               <Typography variant="lead" color="white" className="opacity-80">
-              DIGITALISATION DE LA LEGALISATION DES SIGNATURES ET DES COPIES CONFORMES
+              "Explorez WRAAQI et sa vision avant-gardiste :
+               la digitalisation révolutionnaire des signatures et des copies conformes, 
+              repoussant les limites de l'efficacité."
               </Typography>
             </div>
           </div>
@@ -56,33 +60,36 @@ export function Home() {
           <div className="mt-32 flex flex-wrap items-center">
             <div className="mx-auto -mt-8 w-full px-4 md:w-5/12">
               <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-blue-gray-900 p-2 text-center shadow-lg">
-                <FingerPrintIcon className="h-8 w-8 text-white " />
+                <QuestionMarkCircleIcon className="h-8 w-8 text-white " />
               </div>
               <Typography
                 variant="h3"
                 className="mb-3 font-bold"
                 color="blue-gray"
               >
-                Working with us is a pleasure
+                C'EST QUOI ?
               </Typography>
               <Typography className="mb-8 font-normal text-blue-gray-500">
-                Don't let your uses guess by attaching tooltips and popoves to
-                any element. Just make sure you enable them first via
-                JavaScript.
+                WRAAQI révolutionne la légalisation en numérisant les signatures 
+                et les copies pour une conformité sans faille. Simplifiez vos processus
+                 administratifs avec une gestion efficace des documents, offrant une 
+                 expérience sécurisée et moderne.
+
+
                 <br />
                 <br />
-                The kit comes with three pre-built pages to help you get started
-                faster. You can change the text and images and you're good to
-                go. Just make sure you enable them first via JavaScript.
+                WRAAQI représente bien plus qu'une simple plateforme de digitalisation. 
+                C'est une solution complète qui redéfinit la manière dont les processus 
+                administratifs liés à la légalisation des signatures et des copies conformes 
+                sont abordés, avec un engagement envers l'efficacité, la sécurité et la conformité.
               </Typography>
-              <Button variant="filled">read more</Button>
             </div>
             <div className="mx-auto mt-24 flex w-full justify-center px-4 md:w-4/12 lg:mt-0">
               <Card className="shadow-lg border shadow-gray-500/10 rounded-lg">
                 <CardHeader floated={false} className="relative h-56">
                   <img
                     alt="Card Image"
-                    src="/img/teamwork.png"
+                    src="/img/maroc_royaume.jpeg"
                     className="h-full w-full"
                   />
                 </CardHeader>
@@ -93,12 +100,13 @@ export function Home() {
                     color="blue-gray"
                     className="mb-3 mt-2 font-bold"
                   >
-                    Top Notch Services
+                    Wraaqi qui?
                   </Typography>
                   <Typography className="font-normal text-blue-gray-500">
-                    The Arctic Ocean freezes every winter and much of the
-                    sea-ice then thaws every summer, and that process will
-                    continue whatever happens.
+                  WRAAQI révolutionne la légalisation en numérisant les signatures 
+                  et les copies pour une conformité sans faille. Simplifiez vos processus
+                  administratifs avec une gestion efficace des documents, offrant une 
+                  expérience sécurisée et moderne.
                   </Typography>
                 </CardBody>
               </Card>
@@ -106,40 +114,11 @@ export function Home() {
           </div>
         </div>
       </section>
-      <section className="px-4 pt-20 pb-48">
-        <div className="container mx-auto">
-          <PageTitle section="Our Team" heading="Here are our heroes">
-            According to the National Oceanic and Atmospheric Administration,
-            Ted, Scambos, NSIDClead scentist, puts the potentially record
-            maximum.
-          </PageTitle>
-          <div className="mt-24 grid grid-cols-1 gap-12 gap-x-24 md:grid-cols-2 xl:grid-cols-4">
-            {teamData.map(({ img, name, position, socials }) => (
-              <TeamCard
-                key={name}
-                img={img}
-                name={name}
-                position={position}
-                socials={
-                  <div className="flex items-center gap-2">
-                    {socials.map(({ color, name }) => (
-                      <IconButton key={name} color={color} variant="text">
-                        <i className={`fa-brands text-xl fa-${name}`} />
-                      </IconButton>
-                    ))}
-                  </div>
-                }
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+      
       <section className="relative bg-white py-24 px-4">
         <div className="container mx-auto">
-          <PageTitle section="Co-Working" heading="Build something">
-            Put the potentially record low maximum sea ice extent tihs year down
-            to low ice. According to the National Oceanic and Atmospheric
-            Administration, Ted, Scambos.
+          <PageTitle section="Philosophie" heading="En train de généraliser...">
+            La plateforme WRAAQI permet un accès à distance aux services de légalisation de signatures, de certification de copies conformes et d'admission temporaire en attendant l'intégration d'autres services administratifs.
           </PageTitle>
           <div className="mx-auto mt-20 mb-48 grid max-w-5xl grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-3">
             {contactData.map(({ title, icon, description }) => (
@@ -163,8 +142,8 @@ export function Home() {
               </Card>
             ))}
           </div>
-          <PageTitle section="Contact Us" heading="Want to work with us?">
-            Complete this form and we will get back to you in 24 hours.
+          <PageTitle section="Contactez-nous" heading="Probléme Technique!">
+          Remplissez ce formulaire, et nous vous répondrons dans les 24 heures.
           </PageTitle>
           <form className="mx-auto w-full mt-12 lg:w-5/12">
             <div className="mb-8 flex gap-8">
@@ -179,12 +158,12 @@ export function Home() {
                   color="gray"
                   className="flex items-center font-normal"
                 >
-                  I agree the
+                  J'acccepte
                   <a
                     href="#"
                     className="font-medium transition-colors hover:text-gray-900"
                   >
-                    &nbsp;Terms and Conditions
+                    &nbsp;les termes!
                   </a>
                 </Typography>
               }
