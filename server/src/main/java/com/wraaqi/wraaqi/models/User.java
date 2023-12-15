@@ -1,18 +1,17 @@
 package com.wraaqi.wraaqi.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Inheritance(strategy=InheritanceType.JOINED)
-@DiscriminatorColumn(name="user_role")
 @Table(name = "users")
 public class User {
     @Id
@@ -28,6 +27,8 @@ public class User {
     private String password;
     private String role;
     private String  nationalite;
+    @OneToMany(mappedBy = "citoyen")
+    private List<DemandeCitoyen> listeDemandes;
 
 }
 
