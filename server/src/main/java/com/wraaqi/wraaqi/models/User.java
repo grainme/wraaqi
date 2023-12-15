@@ -19,8 +19,10 @@ public class User {
     @Column(name="numero")
     private Long id;
     private String firstname;
+    private String cin;
     private String lastname;
     private int age;
+    private String gender;
     @Embedded
     private Adresse adresse;
     private String email;
