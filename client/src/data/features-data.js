@@ -4,20 +4,20 @@ import {
 
 export const featuresData = [
   {
-    color: "black",
+    color: "indigo",
     title: "Légalisation",
     icon: DocumentCheckIcon,
     description:
       "WRAAQI révolutionne cette démarche en introduisant la digitalisation avancée des signatures et la certification des copies .",
   },
   {
-    color: "black",
+    color: "indigo",
     title: "Demande d'inscription",
     icon:  UserPlusIcon,
     description:
       "L'inscription sur WRAAQI, suite à une demande, simplifie le processus administratif. "  },
   {
-    color: "black",
+    color: "indigo",
     title: " Réclamation",
     icon: MegaphoneIcon,
     description:

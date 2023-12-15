@@ -5,21 +5,40 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-
+import { Link } from "react-router-dom"; 
+import axios from 'axios';
+import {useNavigate} from "react-router-dom"
 
 export function SignIn() {
-  const [email,setEmail]=useState("")
-  const [password,setPassword]=useState("")
-  const onClick=()=>{
-    const body={
-      email:email,
-      password:password
-    }
-    axios.post("url",body)
-  }
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [userNotFound, setUserNotFound] = useState(false);
+  const navigate = useNavigate();
+  
+  const onClick = () => {
+    const body = {
+      email: email,
+      password: password,
+    };
+  
+    axios.post("http://localhost:8080/user/checkUser", body)
+      .then(response => {
+        if (response.status === 200) {
+          // Ghadi nmchiw men had lpage lpage akhura
+          navigate("home")
+        } else {
+          console.log("lose");
+          setUserNotFound(true);
+        }
+      })
+      .catch(error => {
+        console.error("Kin chi Error somewhere fl CLOUD akhay!");
+        setUserNotFound(true);
+      });
+  };
+
   return (
-    <section className="m-8 flex gap-4">
+    <section className="m-8 flex gap-4 font-switzer">
       <div className="w-full lg:w-3/5 mt-24">
         <div className="text-center">
           <Typography variant="h2" className="font-bold mb-4">Connexion </Typography>
@@ -32,7 +51,7 @@ export function SignIn() {
             </Typography>
             <Input
               size="lg"
-              placeholder="hamzanachid82@@mail.com"
+              placeholder="user@wraaqi.com"
               className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
               labelProps={{
                 className: "before:content-none after:content-none",
@@ -57,6 +76,7 @@ export function SignIn() {
           <Button onClick={onClick} className="mt-6" fullWidth>
               connexion
           </Button>
+          {userNotFound?<div className="flex justify-center items-center text-red-500 m-2 text-[14px] font-semibold">User Not Found!</div>:null}
 
           <div className="flex items-center justify-between gap-2 mt-6">
             <Typography variant="small" className="font-medium text-gray-900">
@@ -73,7 +93,7 @@ export function SignIn() {
       </div>
       <div className="w-2/5 h-full hidden lg:block">
         <img
-          src="/img/test.jpeg"
+          src="/img/Casa.jpg"
           className="h-[90vh] w-full object-cover rounded-3xl"
         />
       </div>

@@ -18,7 +18,7 @@ import { featuresData, teamData, contactData } from "@/data";
 export function Home() {
   return (
     <>
-      <div className="relative flex h-screen content-center items-center justify-center pt-16 pb-32">
+      <div className="relative flex h-screen content-center items-center justify-center pt-16 pb-32 font-switzer">
         <div className="absolute top-0 h-full w-full bg-[url('/img/Casa.jpg')] bg-cover bg-center" />
         <div className="absolute top-0 h-full w-full bg-black/60 bg-cover bg-center" />
         <div className="max-w-8xl container relative mx-auto">
@@ -27,16 +27,16 @@ export function Home() {
               <Typography
                 variant="h1"
                 color="white"
-                className="mb-6 font-black"
+                className="mb-6  font-semibold"
               >
-                WRAAQI :Nouvelle ère <br />
-                <span> la digitalisation des signatures et des copies conforms</span>
+                WRAAQI, Nouvelle ère <br />
+                <span> la digitalisation des signatures et des copies conformes</span>
 
               </Typography>
               <Typography variant="lead" color="white" className="opacity-80">
-              "Explorez WRAAQI et sa vision avant-gardiste :
+              Explorez WRAAQI et sa vision avant-gardiste :
                la digitalisation révolutionnaire des signatures et des copies conformes, 
-              repoussant les limites de l'efficacité."
+              repoussant les limites de l'efficacité.
               </Typography>
             </div>
           </div>
