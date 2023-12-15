@@ -25,12 +25,3 @@ Wraaqi is a Spring Boot and Vite-based project designed to modernize and digitiz
 - **Scalability:** Built on Spring Boot and Vite, Wraaqi is scalable to handle the growing demands of national documentation management.
 
 - **Real-time Updates:** Users can benefit from real-time updates and notifications, ensuring they are informed about the status of their documents.
-
-## Getting Started
-
-To get started with Wraaqi, follow these steps:
-
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/your-username/wraaqi.git
-```
