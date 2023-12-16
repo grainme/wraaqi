@@ -3,12 +3,12 @@ import { Typography } from "@material-tailwind/react";
 
 export function PageTitle({ section, heading, children }) {
   return (
-    <div className="mx-auto w-full px-4 text-center lg:w-6/12">
-      <Typography variant="lead" className="font-semibold">{section}</Typography>
-      <Typography variant="h2" color="blue-gray" className="my-3">
+    <div className="mx-auto w-full px-4 text-center lg:w-6/12 font-CG">
+      <Typography variant="lead" className="font-semiboldfont-CG">{section}</Typography>
+      <Typography variant="h2" color="blue-gray" className="my-3 font-CG">
         {heading}
       </Typography>
-      <Typography variant="lead" className="text-blue-gray-500">
+      <Typography variant="lead" className="text-blue-gray-500 font-CG">
         {children}
       </Typography>
     </div>

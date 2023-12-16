@@ -21,7 +21,7 @@ export function Home() {
   return (
     <>
 
-      <div className="relative flex h-screen content-center items-center justify-center pt-16 pb-32 font-switzer">
+      <div className="font-CG relative flex h-screen content-center items-center justify-center pt-16 pb-32 font-switzer">
         <div className="absolute top-0 h-full w-full bg-[url('/img/Casa.jpg')] bg-cover bg-center" />
         <div className="absolute top-0 h-full w-full bg-black/60 bg-cover bg-center" />
         <div className="max-w-8xl container relative mx-auto">
@@ -32,18 +32,18 @@ export function Home() {
               <Typography
                 variant="h1"
                 color="white"
-                className="mb-6  font-semibold"
+                className="mb-6 font-CG font-semibold"
               >
                 WRAAQI, Nouvelle ère <br />
                 <span> la digitalisation des signatures et des copies conformes</span>
 
               </Typography>
-              <Typography variant="lead" color="white" className="opacity-80">
+              <Typography  variant="lead" color="white" className="font-CG opacity-80">
               Explorez WRAAQI et sa vision avant-gardiste :
                la digitalisation révolutionnaire des signatures et des copies conformes, 
               repoussant les limites de l'efficacité.
               </Typography>
-              <button className="text-black bg-white rounded-lg p-3 border-transparent m-3"><Link to="/auth/sign-in">Connexion</Link></button>
+              <button className="text-black font-CG bg-white rounded-lg p-3 border-transparent m-3"><Link to="/auth/sign-in">Connexion</Link></button>
             </div>
           </div>
         </div>
@@ -70,12 +70,12 @@ export function Home() {
               </div>
               <Typography
                 variant="h3"
-                className="mb-3 font-bold"
+                className="mb-3 font-bold font-CG"
                 color="blue-gray"
               >
                 C'EST QUOI ?
               </Typography>
-              <Typography className="mb-8 font-normal text-blue-gray-500">
+              <Typography className="mb-8 font-normal font-CG text-blue-gray-500">
                 WRAAQI révolutionne la légalisation en numérisant les signatures 
                 et les copies pour une conformité sans faille. Simplifiez vos processus
                  administratifs avec une gestion efficace des documents, offrant une 
@@ -100,15 +100,15 @@ export function Home() {
                   />
                 </CardHeader>
                 <CardBody>
-                  <Typography variant="small" color="blue-gray" className="font-normal">Enterprise</Typography>
+                  <Typography variant="small" color="blue-gray" className="font-normal font-CG">Enterprise</Typography>
                   <Typography
                     variant="h5"
                     color="blue-gray"
-                    className="mb-3 mt-2 font-bold"
+                    className="mb-3 mt-2 font-bold font-CG"
                   >
                     Wraaqi qui?
                   </Typography>
-                  <Typography className="font-normal text-blue-gray-500">
+                  <Typography className="font-normal font-CG text-blue-gray-500">
                   WRAAQI révolutionne la légalisation en numérisant les signatures 
                   et les copies pour une conformité sans faille. Simplifiez vos processus
                   administratifs avec une gestion efficace des documents, offrant une 
@@ -121,9 +121,9 @@ export function Home() {
         </div>
       </section>
       
-      <section className="relative bg-white py-24 px-4">
-        <div className="container mx-auto">
-          <PageTitle section="Philosophie" heading="En train de généraliser...">
+      <section className="relative bg-white py-24 px-4 font-CG">
+        <div className="container mx-auto font-CG">
+          <PageTitle className="font-CG" section="Philosophie" heading="En train de généraliser...">
             La plateforme WRAAQI permet un accès à distance aux services de légalisation de signatures, de certification de copies conformes et d'admission temporaire en attendant l'intégration d'autres services administratifs.
           </PageTitle>
           <div className="mx-auto mt-20 mb-48 grid max-w-5xl grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-3">
@@ -132,17 +132,17 @@ export function Home() {
                 key={title}
                 color="transparent"
                 shadow={false}
-                className="text-center text-blue-gray-900"
+                className="text-center font-CG text-blue-gray-900"
               >
-                <div className="mx-auto mb-6 grid h-14 w-14 place-items-center rounded-full bg-blue-gray-900 shadow-lg shadow-gray-500/20">
+                <div className="mx-auto font-CG mb-6 grid h-14 w-14 place-items-center rounded-full bg-blue-gray-900 shadow-lg shadow-gray-500/20">
                   {React.createElement(icon, {
                     className: "w-5 h-5 text-white",
                   })}
                 </div>
-                <Typography variant="h5" color="blue-gray" className="mb-2">
+                <Typography variant="h5" color="blue-gray" className="mb-2 font-CG">
                   {title}
                 </Typography>
-                <Typography className="font-normal text-blue-gray-500">
+                <Typography className="font-normal text-blue-gray-500 font-CG">
                   {description}
                 </Typography>
               </Card>
@@ -162,12 +162,12 @@ export function Home() {
                 <Typography
                   variant="small"
                   color="gray"
-                  className="flex items-center font-normal"
+                  className="flex items-center font-normal font-CG"
                 >
                   J'acccepte
                   <a
                     href="#"
-                    className="font-medium transition-colors hover:text-gray-900"
+                    className="font-medium transition-colors hover:text-gray-900 font-CG"
                   >
                     &nbsp;les termes!
                   </a>
@@ -175,7 +175,7 @@ export function Home() {
               }
               containerProps={{ className: "-ml-2.5" }}
             />
-            <Button variant="gradient" size="lg" className="mt-8" fullWidth>
+            <Button variant="gradient" size="lg" className="mt-8 font-CG text-[16px] tracking-wider" fullWidth>
               Send Message
             </Button>
           </form>

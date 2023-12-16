@@ -29,8 +29,8 @@ import { CheckCircleIcon, ClockIcon } from "@heroicons/react/24/solid";
 
 export function Home() {
   return (
-    <div className="mt-12">
-      <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
+    <div className="mt-12 font-CG">
+      <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4 font-CG">
         {statisticsCardsData.map(({ icon, title, footer, ...rest }) => (
           <StatisticsCard
             key={title}
@@ -48,7 +48,7 @@ export function Home() {
           />
         ))}
       </div>
-      <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-3">
+      <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-3 font-CG">
         {statisticsChartsData.map((props) => (
           <StatisticsChart
             key={props.title}
@@ -65,21 +65,21 @@ export function Home() {
           />
         ))}
       </div>
-      <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
-        <Card className="overflow-hidden xl:col-span-2 border border-blue-gray-100 shadow-sm">
+      <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3 font-CG">
+        <Card className="overflow-hidden xl:col-span-2 border border-blue-gray-100 font-CG shadow-sm">
           <CardHeader
             floated={false}
             shadow={false}
             color="transparent"
-            className="m-0 flex items-center justify-between p-6"
+            className="m-0 flex items-center justify-between p-6 font-CG"
           >
             <div>
-              <Typography variant="h6" color="blue-gray" className="mb-1">
+              <Typography variant="h6" color="blue-gray" className="mb-1 font-CG">
                 Projects
               </Typography>
               <Typography
                 variant="small"
-                className="flex items-center gap-1 font-normal text-blue-gray-600"
+                className="flex items-center gap-1 font-normal text-blue-gray-600 font-CG"
               >
                 <CheckCircleIcon strokeWidth={3} className="h-4 w-4 text-blue-gray-200" />
                 <strong>30 done</strong> this month
@@ -102,8 +102,8 @@ export function Home() {
               </MenuList>
             </Menu>
           </CardHeader>
-          <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
-            <table className="w-full min-w-[640px] table-auto">
+          <CardBody className="overflow-x-scroll px-0 pt-0 pb-2 font-CG">
+            <table className="w-full min-w-[640px] table-auto font-CG">
               <thead>
                 <tr>
                   {["companies", "members", "budget", "completion"].map(
@@ -140,7 +140,7 @@ export function Home() {
                             <Typography
                               variant="small"
                               color="blue-gray"
-                              className="font-bold"
+                              className="font-bold font-CG"
                             >
                               {name}
                             </Typography>
@@ -164,7 +164,7 @@ export function Home() {
                         <td className={className}>
                           <Typography
                             variant="small"
-                            className="text-xs font-medium text-blue-gray-600"
+                            className="text-xs font-medium text-blue-gray-600 font-CG"
                           >
                             {budget}
                           </Typography>
@@ -173,7 +173,7 @@ export function Home() {
                           <div className="w-10/12">
                             <Typography
                               variant="small"
-                              className="mb-1 block text-xs font-medium text-blue-gray-600"
+                              className="mb-1 block text-xs font-medium text-blue-gray-600 font-CG"
                             >
                               {completion}%
                             </Typography>
@@ -193,23 +193,23 @@ export function Home() {
             </table>
           </CardBody>
         </Card>
-        <Card className="border border-blue-gray-100 shadow-sm">
+        <Card className="border border-blue-gray-100 shadow-sm font-CG">
           <CardHeader
             floated={false}
             shadow={false}
             color="transparent"
             className="m-0 p-6"
           >
-            <Typography variant="h6" color="blue-gray" className="mb-2">
+            <Typography variant="h6" color="blue-gray" className="mb-2 font-CG">
               Orders Overview
             </Typography>
             <Typography
               variant="small"
-              className="flex items-center gap-1 font-normal text-blue-gray-600"
+              className="flex items-center gap-1 font-normal text-blue-gray-600 font-CG"
             >
               <ArrowUpIcon
                 strokeWidth={3}
-                className="h-3.5 w-3.5 text-green-500"
+                className="h-3.5 w-3.5 text-green-500 font-CG"
               />
               <strong>24%</strong> this month
             </Typography>
@@ -233,7 +233,7 @@ export function Home() {
                     <Typography
                       variant="small"
                       color="blue-gray"
-                      className="block font-medium"
+                      className="block font-medium font-CG"
                     >
                       {title}
                     </Typography>
