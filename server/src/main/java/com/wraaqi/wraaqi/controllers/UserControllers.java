@@ -30,7 +30,7 @@ public class UserControllers {
     }
 
     @PostMapping("/checkUser")
-    public ResponseEntity<?> findUserByMailAndPassword(@RequestBody Map<String, String> credentials) {
+        public ResponseEntity<?> checkUserExistence(@RequestBody Map<String, String> credentials) {
         String email = credentials.get("email");
         String password = credentials.get("password");
 
