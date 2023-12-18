@@ -31,7 +31,6 @@ export function Sidenav({ brandImg, brandName, routes }) {
           <Typography
             variant="h6"
             color={sidenavType === "dark" ? "white" : "blue-gray"}
-            className="font-CG"
           >
             {brandName}
           </Typography>
@@ -55,7 +54,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
                 <Typography
                   variant="small"
                   color={sidenavType === "dark" ? "white" : "blue-gray"}
-                  className="font-black uppercase opacity-75 font-CG"
+                  className="font-black uppercase opacity-75"
                 >
                   {title}
                 </Typography>
@@ -74,13 +73,13 @@ export function Sidenav({ brandImg, brandName, routes }) {
                           ? "white"
                           : "blue-gray"
                       }
-                      className="flex items-center gap-4 px-4 capitalize font-CG"
+                      className="flex items-center gap-4 px-4 capitalize"
                       fullWidth
                     >
                       {icon}
                       <Typography
                         color="inherit"
-                        className="font-medium font-CG capitalize"
+                        className="font-medium capitalize"
                       >
                         {name}
                       </Typography>
@@ -97,8 +96,8 @@ export function Sidenav({ brandImg, brandName, routes }) {
 }
 
 Sidenav.defaultProps = {
-  brandImg: "/img/WraaqiLogo.jpg",
-  brandName: "Wraaqi Dashboard",
+  brandImg: "/img/logo-ct.png",
+  brandName: "Material Tailwind React",
 };
 
 Sidenav.propTypes = {

@@ -10,21 +10,69 @@ import {
 } from "@material-tailwind/react";
 import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 import { authorsTableData, projectsTableData } from "@/data";
-
+import axios from "axios";
+import { useState,useEffect } from "react";
+import Input from "@material-tailwind/react";
+import Button from "@material-tailwind/react";
 export function Tables() {
+  const [admins,setAdmins]=useState([])
+  const [commun,setCommun]=useState([])
+  const [change,setChange]=useState(false)
+  
+  useEffect(()=>{
+    axios.get("http://localhost:3000/adminc/listOfAdminc")
+      .then(response => {
+        if (response.status === 200) {
+          // Ghadi nmchiw men had lpage lpage akhura
+          setCommun(response.data)
+          console.log(admins);
+        } else {
+          console.log("lose"); 
+        }
+      })
+      .catch(error => {
+        console.error("Kin chi Error somewhere fl CLOUD akhay!"); 
+      });
+      axios.get("http://localhost:3000/adminl")
+      .then(response => {
+        if (response.status === 200) {
+          // Ghadi nmchiw men had lpage lpage akhura
+          setAdmins(response.data)
+          console.log(admins);
+        } else {
+          console.log("lose"); 
+        }
+      })
+      .catch(error => {
+        console.error("Kin chi Error somewhere fl CLOUD akhay!"); 
+      });
+  },[change])
+  const hundleDelete=(id)=>{
+    axios.delete(`http://localhost:3000/adminc/deleteById/${id}`)
+    .then(response => {
+      if (response.status === 200) {
+        setChange(!change)
+      } else {
+        console.log("lose"); 
+      }
+    })
+    .catch(error => {
+      console.error("Kin chi Error somewhere fl CLOUD akhay!"); 
+    });
+  }
   return (
     <div className="mt-12 mb-8 flex flex-col gap-12">
       <Card>
         <CardHeader variant="gradient" color="gray" className="mb-8 p-6">
           <Typography variant="h6" color="white">
-            Authors Table
+            Admin Logiciel
           </Typography>
         </CardHeader>
         <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
           <table className="w-full min-w-[640px] table-auto">
             <thead>
               <tr>
-                {["author", "function", "status", "employed", ""].map((el) => (
+                {["Admin","cin", "status", "employed"].map((el) => (
                   <th
                     key={el}
                     className="border-b border-blue-gray-50 py-3 px-5 text-left"
@@ -40,71 +88,55 @@ export function Tables() {
               </tr>
             </thead>
             <tbody>
-              {authorsTableData.map(
-                ({ img, name, email, job, online, date }, key) => {
+              {admins.map(
+                
+                (data, key) => {
                   const className = `py-3 px-5 ${
-                    key === authorsTableData.length - 1
+                    key === admins.length - 1
                       ? ""
                       : "border-b border-blue-gray-50"
                   }`;
 
                   return (
-                    <tr key={name}>
+                    <tr key={data.user.firstname}>
                       <td className={className}>
                         <div className="flex items-center gap-4">
-                          <Avatar
-                            src={img}
-                            alt={name}
-                            size="sm"
-                            variant="rounded"
-                          />
+                          <Avatar src={"/img/team-2.jpeg"} alt={'d'} size="sm" variant="rounded" />
                           <div>
                             <Typography
                               variant="small"
                               color="blue-gray"
                               className="font-semibold"
                             >
-                              {name}
+                              {data.user.firstname+" "+data.user.lastname}
                             </Typography>
                             <Typography className="text-xs font-normal text-blue-gray-500">
-                              {email}
+                              {data.email}
                             </Typography>
                           </div>
                         </div>
                       </td>
                       <td className={className}>
                         <Typography className="text-xs font-semibold text-blue-gray-600">
-                          {job[0]}
-                        </Typography>
-                        <Typography className="text-xs font-normal text-blue-gray-500">
-                          {job[1]}
+                          {data.user.cin}
                         </Typography>
                       </td>
                       <td className={className}>
                         <Chip
                           variant="gradient"
-                          color={online ? "green" : "blue-gray"}
-                          value={online ? "online" : "offline"}
+                          color={data.user.online ? "green" : "blue-gray"}
+                          value={data.user.online ? "online" : "offline"}
                           className="py-0.5 px-2 text-[11px] font-medium w-fit"
                         />
                       </td>
                       <td className={className}>
                         <Typography className="text-xs font-semibold text-blue-gray-600">
-                          {date}
-                        </Typography>
-                      </td>
-                      <td className={className}>
-                        <Typography
-                          as="a"
-                          href="#"
-                          className="text-xs font-semibold text-blue-gray-600"
-                        >
-                          Edit
+                          {data.employed}
                         </Typography>
                       </td>
                     </tr>
                   );
-                },
+                }
               )}
             </tbody>
           </table>
@@ -113,107 +145,87 @@ export function Tables() {
       <Card>
         <CardHeader variant="gradient" color="gray" className="mb-8 p-6">
           <Typography variant="h6" color="white">
-            Projects Table
+            Admin Commun
           </Typography>
         </CardHeader>
         <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
-          <table className="w-full min-w-[640px] table-auto">
+        <table className="w-full min-w-[640px] table-auto">
             <thead>
               <tr>
-                {["companies", "members", "budget", "completion", ""].map(
-                  (el) => (
-                    <th
-                      key={el}
-                      className="border-b border-blue-gray-50 py-3 px-5 text-left"
+                {["Admin","cin", "status", "employed", ""].map((el) => (
+                  <th
+                    key={el}
+                    className="border-b border-blue-gray-50 py-3 px-5 text-left"
+                  >
+                    <Typography
+                      variant="small"
+                      className="text-[11px] font-bold uppercase text-blue-gray-400"
                     >
-                      <Typography
-                        variant="small"
-                        className="text-[11px] font-bold uppercase text-blue-gray-400"
-                      >
-                        {el}
-                      </Typography>
-                    </th>
-                  ),
-                )}
+                      {el}
+                    </Typography>
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody>
-              {projectsTableData.map(
-                ({ img, name, members, budget, completion }, key) => {
+              {commun.map(
+                
+                (data, key) => {
                   const className = `py-3 px-5 ${
-                    key === projectsTableData.length - 1
+                    key === admins.length - 1
                       ? ""
                       : "border-b border-blue-gray-50"
                   }`;
 
                   return (
-                    <tr key={name}>
+                    <tr key={data.user.firstname}>
                       <td className={className}>
                         <div className="flex items-center gap-4">
-                          <Avatar src={img} alt={name} size="sm" />
-                          <Typography
-                            variant="small"
-                            color="blue-gray"
-                            className="font-bold"
-                          >
-                            {name}
-                          </Typography>
+                          <Avatar src={"/img/team-2.jpeg"} alt={'d'} size="sm" variant="rounded" />
+                          <div>
+                            <Typography
+                              variant="small"
+                              color="blue-gray"
+                              className="font-semibold"
+                            >
+                              {data.user.firstname+" "+data.user.lastname}
+                            </Typography>
+                            <Typography className="text-xs font-normal text-blue-gray-500">
+                              {data.user.email}
+                            </Typography>
+                          </div>
                         </div>
                       </td>
                       <td className={className}>
-                        {members.map(({ img, name }, key) => (
-                          <Tooltip key={name} content={name}>
-                            <Avatar
-                              src={img}
-                              alt={name}
-                              size="xs"
-                              variant="circular"
-                              className={`cursor-pointer border-2 border-white ${
-                                key === 0 ? "" : "-ml-2.5"
-                              }`}
-                            />
-                          </Tooltip>
-                        ))}
-                      </td>
-                      <td className={className}>
-                        <Typography
-                          variant="small"
-                          className="text-xs font-medium text-blue-gray-600"
-                        >
-                          {budget}
+                        <Typography className="text-xs font-semibold text-blue-gray-600">
+                          {data.user.cin}
                         </Typography>
+                      </td> 
+                      <td className={className}>
+                        <Chip
+                          variant="gradient"
+                          color={data.user.online ? "green" : "blue-gray"}
+                          value={data.user.online ? "online" : "offline"}
+                          className="py-0.5 px-2 text-[11px] font-medium w-fit"
+                        />
                       </td>
                       <td className={className}>
-                        <div className="w-10/12">
-                          <Typography
-                            variant="small"
-                            className="mb-1 block text-xs font-medium text-blue-gray-600"
-                          >
-                            {completion}%
-                          </Typography>
-                          <Progress
-                            value={completion}
-                            variant="gradient"
-                            color={completion === 100 ? "green" : "gray"}
-                            className="h-1"
-                          />
-                        </div>
-                      </td>
-                      <td className={className}>
-                        <Typography
-                          as="a"
-                          href="#"
-                          className="text-xs font-semibold text-blue-gray-600"
-                        >
-                          <EllipsisVerticalIcon
-                            strokeWidth={2}
-                            className="h-5 w-5 text-inherit"
-                          />
+                        <Typography className="text-xs font-semibold text-blue-gray-600">
+                          {data.employed}
                         </Typography>
+                      </td> 
+                      
+                      <td className={className}>
+                        <button 
+                        onClick={()=>{hundleDelete(data.id)}}
+                          className="text-xs font-semibold text-red-600"
+                        >
+                          delete
+                        </button>
                       </td>
                     </tr>
                   );
-                },
+                }
               )}
             </tbody>
           </table>
