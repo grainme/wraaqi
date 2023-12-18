@@ -21,7 +21,7 @@ export function Home() {
     <>
       <div className="font-CG relative flex h-screen content-center items-center justify-center pt-16 pb-32 font-switzer">
         <div className="absolute top-0 h-full w-full bg-[url('/img/Casa.jpg')] bg-cover bg-center"></div>
-        <div className="absolute top-0 h-full w-full bg-black/50 bg-cover bg-center">
+        <div className="absolute top-0 h-full w-full bg-black/70 bg-cover bg-center">
           <div className="flex flex-grow justify-between items-center text-white m-4 mx-[7rem]">
             <div>
               <Link to="./auth/sign-in">

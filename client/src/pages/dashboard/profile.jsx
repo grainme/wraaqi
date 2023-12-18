@@ -208,7 +208,7 @@ export function Profile() {
                       </div>
                     </CardFooter>
                   </Card>
-                )
+                ),
               )}
             </div>
           </div>

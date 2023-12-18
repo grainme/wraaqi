@@ -52,7 +52,12 @@ export function Tables() {
                     <tr key={name}>
                       <td className={className}>
                         <div className="flex items-center gap-4">
-                          <Avatar src={img} alt={name} size="sm" variant="rounded" />
+                          <Avatar
+                            src={img}
+                            alt={name}
+                            size="sm"
+                            variant="rounded"
+                          />
                           <div>
                             <Typography
                               variant="small"
@@ -99,7 +104,7 @@ export function Tables() {
                       </td>
                     </tr>
                   );
-                }
+                },
               )}
             </tbody>
           </table>
@@ -128,7 +133,7 @@ export function Tables() {
                         {el}
                       </Typography>
                     </th>
-                  )
+                  ),
                 )}
               </tr>
             </thead>
@@ -208,7 +213,7 @@ export function Tables() {
                       </td>
                     </tr>
                   );
-                }
+                },
               )}
             </tbody>
           </table>

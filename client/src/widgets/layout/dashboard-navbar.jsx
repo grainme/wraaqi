@@ -54,7 +54,7 @@ export function DashboardNavbar() {
               <Typography
                 variant="small"
                 color="blue-gray"
-                className="font-normal opacity-50 transition-all hover:text-blue-500 hover:opacity-100"
+                className="font-normal font-CG opacity-50 transition-all hover:text-blue-500 hover:opacity-100"
               >
                 {layout}
               </Typography>
@@ -62,18 +62,15 @@ export function DashboardNavbar() {
             <Typography
               variant="small"
               color="blue-gray"
-              className="font-normal"
+              className="font-normal font-CG"
             >
               {page}
             </Typography>
           </Breadcrumbs>
-          <Typography variant="h6" color="blue-gray">
-            {page}
-          </Typography>
         </div>
         <div className="flex items-center">
           <div className="mr-auto md:mr-4 md:w-56">
-            <Input label="Search" />
+            <Input label="Search" className="font-CG" />
           </div>
           <IconButton
             variant="text"
@@ -83,28 +80,23 @@ export function DashboardNavbar() {
           >
             <Bars3Icon strokeWidth={3} className="h-6 w-6 text-blue-gray-500" />
           </IconButton>
-          <Link to="/auth/sign-in">
-            <Button
-              variant="text"
-              color="blue-gray"
-              className="hidden items-center gap-1 px-4 xl:flex normal-case"
-            >
-              <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
-              Sign In
-            </Button>
-            <IconButton
-              variant="text"
-              color="blue-gray"
-              className="grid xl:hidden"
-            >
-              <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
-            </IconButton>
-          </Link>
           <Menu>
             <MenuHandler>
-              <IconButton variant="text" color="blue-gray">
-                <BellIcon className="h-5 w-5 text-blue-gray-500" />
-              </IconButton>
+              <div class="flex items-center gap-4">
+                <img
+                  src="https://docs.material-tailwind.com/img/face-2.jpg"
+                  alt="avatar"
+                  class="inline-block relative object-cover object-center !rounded-full w-9 h-9"
+                />
+                <div className="flex flex-col">
+                  <div className="text-black text-[14px] font-CG font-medium">
+                    Tania Andrew
+                  </div>
+                  <div class="text-gray-500 text-[11px] font-CG font-medium">
+                    Web Developer
+                  </div>
+                </div>
+              </div>
             </MenuHandler>
             <MenuList className="w-max border-0">
               <MenuItem className="flex items-center gap-3">
@@ -118,14 +110,14 @@ export function DashboardNavbar() {
                   <Typography
                     variant="small"
                     color="blue-gray"
-                    className="mb-1 font-normal"
+                    className="mb-1 font-normal font-CG"
                   >
                     <strong>New message</strong> from Laur
                   </Typography>
                   <Typography
                     variant="small"
                     color="blue-gray"
-                    className="flex items-center gap-1 text-xs font-normal opacity-60"
+                    className="flex items-center gap-1 text-xs font-normal opacity-60 font-CG"
                   >
                     <ClockIcon className="h-3.5 w-3.5" /> 13 minutes ago
                   </Typography>
@@ -142,14 +134,14 @@ export function DashboardNavbar() {
                   <Typography
                     variant="small"
                     color="blue-gray"
-                    className="mb-1 font-normal"
+                    className="mb-1 font-normal font-CG"
                   >
                     <strong>New album</strong> by Travis Scott
                   </Typography>
                   <Typography
                     variant="small"
                     color="blue-gray"
-                    className="flex items-center gap-1 text-xs font-normal opacity-60"
+                    className="flex items-center gap-1 text-xs font-normal opacity-60 font-CG"
                   >
                     <ClockIcon className="h-3.5 w-3.5" /> 1 day ago
                   </Typography>
@@ -163,14 +155,14 @@ export function DashboardNavbar() {
                   <Typography
                     variant="small"
                     color="blue-gray"
-                    className="mb-1 font-normal"
+                    className="mb-1 font-normal font-CG"
                   >
                     Payment successfully completed
                   </Typography>
                   <Typography
                     variant="small"
                     color="blue-gray"
-                    className="flex items-center gap-1 text-xs font-normal opacity-60"
+                    className="flex items-center gap-1 text-xs font-normal opacity-60 font-CG"
                   >
                     <ClockIcon className="h-3.5 w-3.5" /> 2 days ago
                   </Typography>
@@ -178,13 +170,6 @@ export function DashboardNavbar() {
               </MenuItem>
             </MenuList>
           </Menu>
-          <IconButton
-            variant="text"
-            color="blue-gray"
-            onClick={() => setOpenConfigurator(dispatch, true)}
-          >
-            <Cog6ToothIcon className="h-5 w-5 text-blue-gray-500" />
-          </IconButton>
         </div>
       </div>
     </Navbar>
