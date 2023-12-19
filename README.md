@@ -2,6 +2,19 @@
 
 Wraaqi is a comprehensive project that combines the power of Spring Boot and Vite to revolutionize the process of national documentation. This project aims to streamline and digitize critical documents such as ID Cards, Passports, and more. The goal is to enhance efficiency, security, and accessibility in handling and managing these essential national records.
 
+
+## To Do
+- [ ] espace admin commun+ses fonctionnés
+- [ ] espace admin fonctionnaire+fonctionnalité
+- [ ] espace user +fonctionnalité
+- [ ] StrinAlgorithms
+- [ ] Graph Algorithms
+- [ ] Algorithms: Sorting (QuickSort, MergeSort, etc.)
+- [ ] Algorithms: Searching (Binary Search, Linear Search, etc.)
+- [ ] Dynamic Programming
+- [ ] Monotonic Stack
+
+
 ## Table of Contents
 - [Introduction](#introduction)
 - [Features](#features)
