@@ -3,6 +3,7 @@ package com.wraaqi.wraaqi.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -11,26 +12,25 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Inheritance(strategy=InheritanceType.JOINED)
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="numero")
+    @GeneratedValue
     private Long id;
     private String firstname;
+    @Column(unique = true)
     private String cin;
     private String lastname;
     private int age;
     private String gender;
-    @Embedded
-    private Adresse adresse;
+    @Column(unique = true)
     private String email;
     private String password;
     private String role;
-    private String  nationalite;
-    @OneToMany(mappedBy = "citoyen")
-    private List<DemandeCitoyen> listeDemandes;
-
+    private String nationality;
+    private boolean Online;
+    @Embedded
+    private Adresse adresse;
+    private String telephone;
 }
 
