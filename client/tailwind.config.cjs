@@ -7,6 +7,7 @@ module.exports = withMT({
     extend: {
       fontFamily: {
         CG: ['Clash Grotesk', "sans-serif"],
+        GS: ['General Sans', "sans-serif"]
       },
     },
   },

@@ -5,7 +5,7 @@ import {
   Button,
   Typography,
 } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
@@ -19,6 +19,7 @@ export function SignUp() {
   const [age, setAge] = useState();
   const [nationalite, setNationalite] = useState("");
   const [accdemande,setAccdemande]=useState(false)
+  const navigate = useNavigate(); 
   const onClick = () => {
     const body = {
       firstName: firstName,
@@ -28,18 +29,26 @@ export function SignUp() {
       age: age,
       nationality: nationalite
     };
+  
     if (age >= 18) {
-      axios.post("http://localhost:3000/demandeInscription/saveDemandeInscription", body)
-        .then(response => {
-            console.log("user Added");
-            setAccdemande(true)
-        })
-        .catch((error)=>{
-          console.log(error)
-        })
+      // Assuming you want to store the user information in local storage
+      localStorage.setItem("user", JSON.stringify(body));
+  
+      // If you want to make an API request, uncomment the following code
+      // axios.post("http://localhost:8080/demandeInscription/saveDemandeInscription", body)
+      //   .then(response => {
+      //       console.log("user Added");
+      //       setAccdemande(true)
+      //   })
+      //   .catch((error)=>{
+      //     console.log(error)
+      //   })
+  
+      // Redirect to the desired page
+      navigate("/demandePdf");
     }
-
   };
+  
 
   return (
     <section className="m-8 flex">

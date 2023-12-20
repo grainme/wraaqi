@@ -8,23 +8,29 @@ import { useState } from "react";
 import { Link } from "react-router-dom"; 
 import axios from 'axios';
 import {useNavigate} from "react-router-dom"
+import { useDispatch } from "react-redux";
+import { plus } from "@/features/counter/CounterSlice";
+
+
 
 export function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userNotFound, setUserNotFound] = useState(false);
   const navigate = useNavigate();
-  
+  const dispatch=useDispatch();
+
   const onClick = () => {
     const body = {
       email: email,
       password: password,
     };
-  
+
     axios.post("http://localhost:8080/user/checkUser", body)
       .then(response => {
         if (response.status === 200) {
-          // Ghadi nmchiw men had lpage lpage akhura
+          dispatch(plus(response.data.id))
+          localStorage.setItem('user', JSON.stringify(response.data));
           navigate("/dashboard/home")
         } else {
           console.log("lose");
@@ -32,7 +38,7 @@ export function SignIn() {
         }
       })
       .catch(error => {
-        console.error("Kin chi Error somewhere fl CLOUD akhay!");
+        console.error("Kin chi Error somewhere fl CLOUD akhay!", error);
         setUserNotFound(true);
       });
   };

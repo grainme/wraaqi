@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import { Link, NavLink } from "react-router-dom";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import {
   Avatar,
   Button,
@@ -8,15 +10,30 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { useMaterialTailwindController, setOpenSidenav } from "@/context";
+import { DashboardIcon , PersonIcon, TableIcon, ExitIcon, InfoCircledIcon, ExclamationTriangleIcon} from '@radix-ui/react-icons'
+import { useNavigate } from "react-router-dom";
 
 export function Sidenav({ brandImg, brandName, routes }) {
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavColor, sidenavType, openSidenav } = controller;
+  const navigate = useNavigate();
   const sidenavTypes = {
     dark: "bg-gradient-to-br from-gray-800 to-gray-900",
     white: "bg-white shadow-sm",
     transparent: "bg-transparent",
   };
+
+
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  useEffect(()=>{
+    setUser(JSON.parse(localStorage.getItem("user")));
+    return;
+  }, [])
+
+ const handleLogOut =() => {
+   localStorage.clear();
+   navigate("/auth/sign-in");
+ }
 
   return (
     <aside
@@ -25,71 +42,48 @@ export function Sidenav({ brandImg, brandName, routes }) {
       } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0 border border-blue-gray-100`}
     >
       <div
-        className={`relative`}
+        className="flex flex-row items-center gap-1 m-6"
       >
-        <Link to="/" className="py-6 px-8 text-center">
-          <Typography
-            variant="h6"
-            color={sidenavType === "dark" ? "white" : "blue-gray"}
-          >
-            {brandName}
-          </Typography>
-        </Link>
-        <IconButton
-          variant="text"
-          color="white"
-          size="sm"
-          ripple={false}
-          className="absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden"
-          onClick={() => setOpenSidenav(dispatch, false)}
-        >
-          <XMarkIcon strokeWidth={2.5} className="h-5 w-5 text-white" />
-        </IconButton>
+        <img className="bg-black" src="/img/WraaqiLogo_1.png" width="25%"></img>
+
+        <div className="font-GS text-left">
+          <div className="text-[35px] font-CG font-medium mb-[-.5rem]">elcome</div>
+          <div className="text-[17px]">Back, {user.firstname}!</div>
+        </div>
+
       </div>
-      <div className="m-4">
-        {routes.map(({ layout, title, pages }, key) => (
-          <ul key={key} className="mb-4 flex flex-col gap-1">
-            {title && (
-              <li className="mx-3.5 mt-4 mb-2">
-                <Typography
-                  variant="small"
-                  color={sidenavType === "dark" ? "white" : "blue-gray"}
-                  className="font-black uppercase opacity-75"
-                >
-                  {title}
-                </Typography>
-              </li>
-            )}
-            {pages.map(({ icon, name, path }) => (
-              <li key={name}>
-                <NavLink to={`/${layout}${path}`}>
-                  {({ isActive }) => (
-                    <Button
-                      variant={isActive ? "gradient" : "text"}
-                      color={
-                        isActive
-                          ? sidenavColor
-                          : sidenavType === "dark"
-                          ? "white"
-                          : "blue-gray"
-                      }
-                      className="flex items-center gap-4 px-4 capitalize"
-                      fullWidth
-                    >
-                      {icon}
-                      <Typography
-                        color="inherit"
-                        className="font-medium capitalize"
-                      >
-                        {name}
-                      </Typography>
-                    </Button>
-                  )}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        ))}
+      <div className="m-6 flex flex-col gap-4 font-GS font-medium tracking-tight">
+              <div className="font-semibold my-3">Basic</div>
+              <div className="flex flex-row items-center gap-3">
+                <DashboardIcon className="text-gray-800"/>
+                <Link to="/dashboard/home">Overview</Link>
+              </div>
+              <div className="flex flex-row items-center gap-3">
+                <PersonIcon className="text-gray-800"/>
+                <Link to="/dashboard/profile" >Profile</Link>
+              </div>
+              <div className="flex flex-row items-center gap-3">
+                <TableIcon className="text-gray-800"/>
+                <Link to="/dashboard/table">Demandes</Link>
+              </div>
+              <div className="flex flex-row items-center gap-3">
+                <TableIcon className="text-gray-800"/>
+                <Link to="/dashboard/table">Table</Link>
+              </div>
+              <div className="font-semibold my-3">Support</div>
+              <div className="flex flex-row items-center gap-3">
+                <InfoCircledIcon className="text-gray-800"/>
+                <Link to="/dashboard/help">Help</Link>
+              </div>
+              <div className="flex flex-row items-center gap-3">
+                <ExclamationTriangleIcon className="text-gray-800"/>
+                <div>Report</div>
+              </div>
+              <div className="flex flex-row items-center gap-3">
+                <ExitIcon className="text-red-700"/>
+                <div className="text-red-700 cursor-pointer" onClick={handleLogOut}>Log Out</div>
+              </div>
+
       </div>
     </aside>
   );
@@ -97,7 +91,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
 
 Sidenav.defaultProps = {
   brandImg: "/img/logo-ct.png",
-  brandName: "Material Tailwind React",
+  brandName: "WRAAQI",
 };
 
 Sidenav.propTypes = {

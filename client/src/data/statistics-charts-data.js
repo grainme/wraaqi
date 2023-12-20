@@ -11,16 +11,16 @@ const websiteViewsChart = {
   ],
   options: {
     ...chartsConfig,
-    colors: "#388e3c",
+    colors: "#ffc02b",
     plotOptions: {
       bar: {
-        columnWidth: "16%",
-        borderRadius: 5,
+        columnWidth: "30%",
+        borderRadius: 0,
       },
     },
     xaxis: {
       ...chartsConfig.xaxis,
-      categories: ["M", "T", "W", "T", "F", "S", "S"],
+      categories: ["Marrakech", "Tangier", "Khouribga", "Youssoufia", "Fes", "Safi", "Rabat"],
     },
   },
 };
@@ -111,21 +111,7 @@ export const statisticsChartsData = [
     description: "Last Campaign Performance",
     footer: "campaign sent 2 days ago",
     chart: websiteViewsChart,
-  },
-  {
-    color: "white",
-    title: "Daily Sales",
-    description: "15% increase in today sales",
-    footer: "updated 4 min ago",
-    chart: dailySalesChart,
-  },
-  {
-    color: "white",
-    title: "Completed Tasks",
-    description: "Last Campaign Performance",
-    footer: "just updated",
-    chart: completedTasksChart,
-  },
+  }
 ];
 
 export default statisticsChartsData;

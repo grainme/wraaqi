@@ -4,12 +4,16 @@ export const platformSettingsData = [
     options: [
       {
         checked: true,
-        label: "Reçevoir un Email :Demande est bien traitée.",
+        label: "Receive an Email: Request has been successfully processed.",
       },
       {
         checked: false,
-        label: "Reçevoir un Email :Réclamation est bien traitée. ",}
-     
+        label: "Receive an Email: Complaint has been successfully processed.",
+      },
+      {
+        checked: false,
+        label: "Receive an Email: Application has been updated.",
+      }
     ],
   },
  

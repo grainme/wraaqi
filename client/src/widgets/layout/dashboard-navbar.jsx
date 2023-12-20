@@ -13,9 +13,6 @@ import {
   Avatar,
 } from "@material-tailwind/react";
 import {
-  UserCircleIcon,
-  Cog6ToothIcon,
-  BellIcon,
   ClockIcon,
   CreditCardIcon,
   Bars3Icon,
@@ -25,8 +22,20 @@ import {
   setOpenConfigurator,
   setOpenSidenav,
 } from "@/context";
+import { BellIcon } from '@radix-ui/react-icons'
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+
 
 export function DashboardNavbar() {
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  useEffect(()=>{
+    setUser(JSON.parse(localStorage.getItem("user")));
+    return;
+  }, [])
+
   const [controller, dispatch] = useMaterialTailwindController();
   const { fixedNavbar, openSidenav } = controller;
   const { pathname } = useLocation();
@@ -67,14 +76,9 @@ export function DashboardNavbar() {
               {page}
             </Typography>
           </Breadcrumbs>
-          <Typography variant="h6" color="blue-gray">
-            {page}
-          </Typography>
         </div>
         <div className="flex items-center">
-          <div className="mr-auto md:mr-4 md:w-56">
-            <Input label="Search" />
-          </div>
+
           <IconButton
             variant="text"
             color="blue-gray"
@@ -83,27 +87,11 @@ export function DashboardNavbar() {
           >
             <Bars3Icon strokeWidth={3} className="h-6 w-6 text-blue-gray-500" />
           </IconButton>
-          <Link to="/auth/sign-in">
-            <Button
-              variant="text"
-              color="blue-gray"
-              className="hidden items-center gap-1 px-4 xl:flex normal-case"
-            >
-              <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
-              Sign In
-            </Button>
-            <IconButton
-              variant="text"
-              color="blue-gray"
-              className="grid xl:hidden"
-            >
-              <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
-            </IconButton>
-          </Link>
+          
           <Menu>
             <MenuHandler>
-              <IconButton variant="text" color="blue-gray">
-                <BellIcon className="h-5 w-5 text-blue-gray-500" />
+              <IconButton variant="text" color="blue-gray" className="mr-1">
+                <BellIcon className="h-6 w-6 text-black" />
               </IconButton>
             </MenuHandler>
             <MenuList className="w-max border-0">
@@ -178,13 +166,16 @@ export function DashboardNavbar() {
               </MenuItem>
             </MenuList>
           </Menu>
-          <IconButton
-            variant="text"
-            color="blue-gray"
-            onClick={() => setOpenConfigurator(dispatch, true)}
-          >
-            <Cog6ToothIcon className="h-5 w-5 text-blue-gray-500" />
-          </IconButton>
+          <div className="flex flex-row justify-center items-center gap-3">
+            <div className="bg-gray-400 w-[2.9px] h-9 rounded-xl"></div>
+            <div className="flex flex-row items-center gap-3 font-GS">
+              <img src="../../../public/img/team-2.jpeg" className="w-10 h-10 rounded-full bg-black"></img>
+              <div>
+                <div className="text-[14px] text-black font-semibold">{user.firstname} {user.lastname?.toUpperCase()}</div>
+                <div className="text-[12px] text-gray-900">{user.email}</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </Navbar>
