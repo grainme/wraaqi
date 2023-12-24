@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import {
   Avatar,
   Button,
@@ -13,7 +12,7 @@ import { useMaterialTailwindController, setOpenSidenav } from "@/context";
 import { DashboardIcon , PersonIcon, TableIcon, ExitIcon, InfoCircledIcon, ExclamationTriangleIcon} from '@radix-ui/react-icons'
 import { useNavigate } from "react-router-dom";
 
-export function Sidenav({ brandImg, brandName, routes }) {
+export function SidenavCitoyen({ brandImg, brandName, routes }) {
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavColor, sidenavType, openSidenav } = controller;
   const navigate = useNavigate();
@@ -64,9 +63,12 @@ export function Sidenav({ brandImg, brandName, routes }) {
               </div>
               <div className="flex flex-row items-center gap-3">
                 <TableIcon className="text-gray-800"/>
-                <Link to="./table">Infos Génerales</Link>
+                <Link to="./reclamation">Reclamation</Link>
               </div>
-
+              <div className="flex flex-row items-center gap-3">
+                <TableIcon className="text-gray-800"/>
+                <Link to="./legalisation">Legalisation</Link>
+              </div>
               <div className="font-semibold my-3">Support</div>
               <div className="flex flex-row items-center gap-3">
                 <InfoCircledIcon className="text-gray-800"/>
@@ -80,22 +82,23 @@ export function Sidenav({ brandImg, brandName, routes }) {
                 <ExitIcon className="text-red-700"/>
                 <div className="text-red-700 cursor-pointer" onClick={handleLogOut}>Log Out</div>
               </div>
+
       </div>
     </aside>
   );
 }
 
-Sidenav.defaultProps = {
+SidenavCitoyen.defaultProps = {
   brandImg: "/img/logo-ct.png",
   brandName: "WRAAQI",
 };
 
-Sidenav.propTypes = {
+SidenavCitoyen.propTypes = {
   brandImg: PropTypes.string,
   brandName: PropTypes.string,
   routes: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-Sidenav.displayName = "/src/widgets/layout/sidnave.jsx";
+SidenavCitoyen.displayName = "/src/widgets/layout/sidnaveCitoyen.jsx";
 
-export default Sidenav;
+export default SidenavCitoyen;

@@ -8,7 +8,7 @@ function Grainme(props){
               <div className="bg-gray-200 p-2 rounded-full">
                 <PersonIcon className="w-5 h-5 text-black rounded-lg"/>
               </div>
-              <div className="bg-[#ffca4d] h-5 rounded-full p-1 text-black text-[14px] font-medium font-GS flex justify-center items-center">+12,4%</div>
+              <div className="bg-[#ffca4d] h-5 rounded-full p-1 px-2 text-gray-800 text-[13px] font-medium font-GS flex justify-center items-center">{props.role}</div>
             </div>
             <div className="text-black w-full flex flex-col justify-between font-GS">
               <div className="text-gray-600 font-semibold text-[14px]">

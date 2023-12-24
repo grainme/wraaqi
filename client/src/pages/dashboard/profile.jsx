@@ -1,41 +1,33 @@
 import {
   Card,
   CardBody,
-  CardHeader,
-  CardFooter,
   Avatar,
   Typography,
-  Tabs,
-  TabsHeader,
-  Tab,
-  Switch,
-  Tooltip,
-  Button,
+  Switch
 } from "@material-tailwind/react";
-import {
-  HomeIcon,
-  ChatBubbleLeftEllipsisIcon,
-  Cog6ToothIcon,
-  PencilIcon,
-  DocumentCheckIcon,
-  MegaphoneIcon,
-} from "@heroicons/react/24/solid";
-import { Link } from "react-router-dom";
-import { platformSettingsData, conversationsData, projectsData } from "@/data";
-import { useSelector } from "react-redux";
+import { platformSettingsData} from "@/data";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { CheckIcon } from '@radix-ui/react-icons'
-
+import { supabase } from "@/client/supabaseClient";
 
 
 export function Profile() {
-
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [profileImg, setProfileImg] = useState("");
+
+
   useEffect(()=>{
     setUser(JSON.parse(localStorage.getItem("user")));
+    getImageFromSupabase(user);
     return;
   }, [])
+
+
+  const getImageFromSupabase = async (user)=>{
+    const { data, error } = supabase
+    .storage.from("wraaqi").getPublicUrl(user.cin + "/avatar.png");
+    setProfileImg(data.publicUrl);
+  }
 
   return (
     <>
@@ -47,7 +39,7 @@ export function Profile() {
           <div className="mb-10 flex items-center justify-between flex-wrap gap-6">
             <div className="flex items-center gap-6">
               <Avatar
-                src="/img/bruce-mars.jpeg"
+                src={profileImg}
                 alt="bruce-mars"
                 size="xl"
                 variant="rounded"

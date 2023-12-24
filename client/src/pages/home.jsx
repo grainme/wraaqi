@@ -62,7 +62,7 @@ export function Home() {
               <Typography
                 variant="h1"
                 color="white"
-                className="mb-6 font-CG font-semibold"
+                className="mb-6 text-[60px] font-CG font-semibold"
               >
                 <span>
                   {" "}
@@ -82,22 +82,22 @@ export function Home() {
           </div>
         </div>
       </div>
-      <section className="-mt-32 bg-white px-4 pb-20 pt-4">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {featuresData.map(({ color, title, icon, description }) => (
-              <FeatureCard
-                key={title}
-                color={color}
-                title={title}
-                icon={React.createElement(icon, {
-                  className: "w-5 h-5 text-white",
-                })}
-                description={description}
-              />
-            ))}
-          </div>
-          <div className="mt-32 flex flex-wrap items-center">
+        <section className="-mt-32 bg-white px-4 pb-20 pt-4">
+          <div className="container mx-auto">
+            {/* <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {featuresData.map(({ color, title, icon, description }) => (
+                <FeatureCard
+                  key={title}
+                  color={color}
+                  title={title}
+                  icon={React.createElement(icon, {
+                    className: "w-5 h-5 text-white",
+                  })}
+                  description={description}
+                />
+              ))}
+            </div> */}
+            <div className="mt-32 flex flex-wrap items-center">
             <div className="mx-auto -mt-8 w-full px-4 md:w-5/12">
               <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-blue-gray-900 p-2 text-center shadow-lg">
                 <QuestionMarkCircleIcon className="h-8 w-8 text-white " />
@@ -241,6 +241,7 @@ export function Home() {
       <div className="bg-white">
         <Footer />
       </div>
+      
     </>
   );
 }

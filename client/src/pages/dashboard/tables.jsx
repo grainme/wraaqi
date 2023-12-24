@@ -5,27 +5,26 @@ import {
   Typography,
   Avatar,
   Chip,
-  Tooltip,
-  Progress,
 } from "@material-tailwind/react";
-import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
-import { authorsTableData, projectsTableData } from "@/data";
 import axios from "axios";
 import { useState,useEffect } from "react";
-import Input from "@material-tailwind/react";
-import Button from "@material-tailwind/react";
+
 export function Tables() {
-  const [admins,setAdmins]=useState([])
-  const [commun,setCommun]=useState([])
-  const [change,setChange]=useState(false)
+  const [admins,setAdmins]=useState([]);
+  const [commun,setCommun]=useState([]);
+  const [change,setChange]=useState(false);
+  const [showNewAdminComponent, setShowNewAdminComponent] = useState(false);
+
+  const handleNewAdminClick = () => {
+    setShowNewAdminComponent(true);
+  };
   
   useEffect(()=>{
-    axios.get("http://localhost:3000/adminc/listOfAdminc")
+    axios.get("http://localhost:8080/adminc/listOfAdminc")
       .then(response => {
         if (response.status === 200) {
           // Ghadi nmchiw men had lpage lpage akhura
           setCommun(response.data)
-          console.log(admins);
         } else {
           console.log("lose"); 
         }
@@ -33,12 +32,11 @@ export function Tables() {
       .catch(error => {
         console.error("Kin chi Error somewhere fl CLOUD akhay!"); 
       });
-      axios.get("http://localhost:3000/adminl")
+      axios.get("http://localhost:8080/adminl/listeOfAdminsL")
       .then(response => {
         if (response.status === 200) {
           // Ghadi nmchiw men had lpage lpage akhura
           setAdmins(response.data)
-          console.log(admins);
         } else {
           console.log("lose"); 
         }
@@ -48,7 +46,7 @@ export function Tables() {
       });
   },[change])
   const hundleDelete=(id)=>{
-    axios.delete(`http://localhost:3000/adminc/deleteById/${id}`)
+    axios.delete(`http://localhost:8080/adminc/deleteById/${id}`)
     .then(response => {
       if (response.status === 200) {
         setChange(!change)
@@ -61,25 +59,25 @@ export function Tables() {
     });
   }
   return (
-    <div className="mt-12 mb-8 flex flex-col gap-12">
+    <div className="mt-12 mb-8 flex flex-col gap-12 ">
       <Card>
-        <CardHeader variant="gradient" color="gray" className="mb-8 p-6">
-          <Typography variant="h6" color="white">
+        <CardHeader color="gray" className="mb-8 p-6">
+          <Typography variant="h5" color="white"  className="font-CG">
             Admin Logiciel
           </Typography>
         </CardHeader>
         <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
-          <table className="w-full min-w-[640px] table-auto">
+          <table className="w-full min-w-[640px] table-auto font-GS">
             <thead>
               <tr>
                 {["Admin","cin", "status", "employed"].map((el) => (
                   <th
                     key={el}
-                    className="border-b border-blue-gray-50 py-3 px-5 text-left"
+                    className="border-b border-blue-gray-50 py-3 px-5 text-left font-GS"
                   >
                     <Typography
                       variant="small"
-                      className="text-[11px] font-bold uppercase text-blue-gray-400"
+                      className="text-[12px] font-medium uppercase text-black font-GS"
                     >
                       {el}
                     </Typography>
@@ -110,7 +108,7 @@ export function Tables() {
                             >
                               {data.user.firstname+" "+data.user.lastname}
                             </Typography>
-                            <Typography className="text-xs font-normal text-blue-gray-500">
+                            <Typography className="text-[12px] font-medium font-GS text-blue-gray-900">
                               {data.email}
                             </Typography>
                           </div>
@@ -143,8 +141,8 @@ export function Tables() {
         </CardBody>
       </Card>
       <Card>
-        <CardHeader variant="gradient" color="gray" className="mb-8 p-6">
-          <Typography variant="h6" color="white">
+        <CardHeader color="gray" className="mb-8 p-6 flex flex-row items-center justify-between">
+          <Typography variant="h5" color="white" className="font-CG">
             Admin Commun
           </Typography>
         </CardHeader>
@@ -159,7 +157,7 @@ export function Tables() {
                   >
                     <Typography
                       variant="small"
-                      className="text-[11px] font-bold uppercase text-blue-gray-400"
+                      className="text-[12px] font-medium uppercase text-black font-GS"
                     >
                       {el}
                     </Typography>
@@ -171,7 +169,7 @@ export function Tables() {
               {commun.map(
                 
                 (data, key) => {
-                  const className = `py-3 px-5 ${
+                  const className = `py-3 font-GS px-5 ${
                     key === admins.length - 1
                       ? ""
                       : "border-b border-blue-gray-50"
@@ -186,31 +184,29 @@ export function Tables() {
                             <Typography
                               variant="small"
                               color="blue-gray"
-                              className="font-semibold"
+                              className="font-semibold font-GS"
                             >
                               {data.user.firstname+" "+data.user.lastname}
                             </Typography>
-                            <Typography className="text-xs font-normal text-blue-gray-500">
+                            <Typography className="text-xs font-normal text-blue-gray-500 font-GS">
                               {data.user.email}
                             </Typography>
                           </div>
                         </div>
                       </td>
                       <td className={className}>
-                        <Typography className="text-xs font-semibold text-blue-gray-600">
+                        <Typography className="text-xs font-semibold text-blue-gray-600 font-GS">
                           {data.user.cin}
                         </Typography>
                       </td> 
                       <td className={className}>
                         <Chip
-                          variant="gradient"
-                          color={data.user.online ? "green" : "blue-gray"}
                           value={data.user.online ? "online" : "offline"}
-                          className="py-0.5 px-2 text-[11px] font-medium w-fit"
-                        />
+                          className={`py-0.5 px-2 font-GS text-[11px] font-medium w-fit ${data.user.online ? "bg-green-500" : "bg-blue-green-500"}`}
+                          />
                       </td>
                       <td className={className}>
-                        <Typography className="text-xs font-semibold text-blue-gray-600">
+                        <Typography className="text-xs font-semibold text-blue-gray-600 font-GS">
                           {data.employed}
                         </Typography>
                       </td> 
@@ -218,9 +214,9 @@ export function Tables() {
                       <td className={className}>
                         <button 
                         onClick={()=>{hundleDelete(data.id)}}
-                          className="text-xs font-semibold text-red-600"
+                          className="text-[15px] font-semibold font-GS text-white bg-red-500 hover:bg-red-600 px-3 py-[1px] rounded-lg"
                         >
-                          delete
+                          Delete
                         </button>
                       </td>
                     </tr>

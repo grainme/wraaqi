@@ -11,6 +11,7 @@ import {
   MenuList,
   MenuItem,
   Avatar,
+  Tooltip,
 } from "@material-tailwind/react";
 import {
   ClockIcon,
@@ -22,19 +23,30 @@ import {
   setOpenConfigurator,
   setOpenSidenav,
 } from "@/context";
-import { BellIcon } from '@radix-ui/react-icons'
-import { useSelector } from "react-redux";
+import { BellIcon, PlusIcon } from "@radix-ui/react-icons";
+import { DrawerPlacement } from "@/widgets/layout/Drawer";
 import { useEffect, useState } from "react";
-import axios from "axios";
-
-
+import { supabase } from "@/client/supabaseClient";
 
 export function DashboardNavbar() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [profileImg, setProfileImg] = useState("");
+
+
   useEffect(()=>{
     setUser(JSON.parse(localStorage.getItem("user")));
+    getImageFromSupabase(user);
     return;
   }, [])
+
+
+  const getImageFromSupabase = async (user)=>{
+    const { data, error } = supabase
+    .storage.from("wraaqi").getPublicUrl(user.cin + "/avatar.png");
+    setProfileImg(data.publicUrl);
+  }
+  
+
 
   const [controller, dispatch] = useMaterialTailwindController();
   const { fixedNavbar, openSidenav } = controller;
@@ -78,16 +90,14 @@ export function DashboardNavbar() {
           </Breadcrumbs>
         </div>
         <div className="flex items-center">
+          {user.role === "admine Logiciel" && (
+            <Tooltip content="Add Admin Commune">
+              <div>
+                <DrawerPlacement />
+              </div>
+            </Tooltip>
+          )}
 
-          <IconButton
-            variant="text"
-            color="blue-gray"
-            className="grid xl:hidden"
-            onClick={() => setOpenSidenav(dispatch, !openSidenav)}
-          >
-            <Bars3Icon strokeWidth={3} className="h-6 w-6 text-blue-gray-500" />
-          </IconButton>
-          
           <Menu>
             <MenuHandler>
               <IconButton variant="text" color="blue-gray" className="mr-1">
@@ -169,9 +179,14 @@ export function DashboardNavbar() {
           <div className="flex flex-row justify-center items-center gap-3">
             <div className="bg-gray-400 w-[2.9px] h-9 rounded-xl"></div>
             <div className="flex flex-row items-center gap-3 font-GS">
-              <img src="../../../public/img/team-2.jpeg" className="w-10 h-10 rounded-full bg-black"></img>
+              <img
+                src={profileImg}
+                className="w-10 h-10 rounded-full bg-black"
+              ></img>
               <div>
-                <div className="text-[14px] text-black font-semibold">{user.firstname} {user.lastname?.toUpperCase()}</div>
+                <div className="text-[14px] text-black font-semibold">
+                  {user.firstname} {user.lastname?.toUpperCase()}
+                </div>
                 <div className="text-[12px] text-gray-900">{user.email}</div>
               </div>
             </div>

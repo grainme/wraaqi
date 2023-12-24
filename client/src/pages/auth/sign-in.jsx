@@ -11,8 +11,6 @@ import {useNavigate} from "react-router-dom"
 import { useDispatch } from "react-redux";
 import { plus } from "@/features/counter/CounterSlice";
 
-
-
 export function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,13 +23,23 @@ export function SignIn() {
       email: email,
       password: password,
     };
-
+  
     axios.post("http://localhost:8080/user/checkUser", body)
       .then(response => {
         if (response.status === 200) {
-          dispatch(plus(response.data.id))
+          dispatch(plus(response.data.id));
+
           localStorage.setItem('user', JSON.stringify(response.data));
-          navigate("/dashboard/home")
+          
+          if (response.data.role === "Citoyen") {
+            navigate("/citoyen/home");
+          } else if (response.data.role === "fonctionnaire") {
+            navigate("/fonctionnaire/home");
+          } else if (response.data.role === "admine communes") {
+            navigate("Commune/home");
+          } else if (response.data.role === "admine Logiciel") {
+            navigate("/dashboard/home"); // Admin logiciel
+          }
         } else {
           console.log("lose");
           setUserNotFound(true);
@@ -42,7 +50,7 @@ export function SignIn() {
         setUserNotFound(true);
       });
   };
-
+  
   return (
     <section className="m-8 flex gap-4 font">
       <div className="w-full lg:w-3/5 mt-24">

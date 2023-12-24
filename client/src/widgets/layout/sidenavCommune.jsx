@@ -1,19 +1,11 @@
 import PropTypes from "prop-types";
-import { Link, NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
-import {
-  Avatar,
-  Button,
-  IconButton,
-  Typography,
-} from "@material-tailwind/react";
-import { useMaterialTailwindController, setOpenSidenav } from "@/context";
+import { useMaterialTailwindController } from "@/context";
 import { DashboardIcon , PersonIcon, TableIcon, ExitIcon, InfoCircledIcon, ExclamationTriangleIcon} from '@radix-ui/react-icons'
 import { useNavigate } from "react-router-dom";
 
-export function Sidenav({ brandImg, brandName, routes }) {
+export function SidenavCommune({ brandImg, brandName, routes }) {
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavColor, sidenavType, openSidenav } = controller;
   const navigate = useNavigate();
@@ -66,7 +58,6 @@ export function Sidenav({ brandImg, brandName, routes }) {
                 <TableIcon className="text-gray-800"/>
                 <Link to="./table">Infos Génerales</Link>
               </div>
-
               <div className="font-semibold my-3">Support</div>
               <div className="flex flex-row items-center gap-3">
                 <InfoCircledIcon className="text-gray-800"/>
@@ -80,22 +71,23 @@ export function Sidenav({ brandImg, brandName, routes }) {
                 <ExitIcon className="text-red-700"/>
                 <div className="text-red-700 cursor-pointer" onClick={handleLogOut}>Log Out</div>
               </div>
+
       </div>
     </aside>
   );
 }
 
-Sidenav.defaultProps = {
+SidenavCommune.defaultProps = {
   brandImg: "/img/logo-ct.png",
   brandName: "WRAAQI",
 };
 
-Sidenav.propTypes = {
+SidenavCommune.propTypes = {
   brandImg: PropTypes.string,
   brandName: PropTypes.string,
   routes: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-Sidenav.displayName = "/src/widgets/layout/sidnave.jsx";
+SidenavCommune.displayName = "/src/widgets/layout/sidenavCommune.jsx";
 
-export default Sidenav;
+export default SidenavCommune;

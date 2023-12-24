@@ -45,7 +45,8 @@ const PDFComponent = () => {
   const cin = user.cin;
   const nationalite = user.nationality;
   const email = user.email;
-  const tel = "0629330464"
+  const image = user.imageUrl;
+  const tel = user.tel ;
 
   const title = 'Demande d\'inscription au Wraaqi';
   const content = `Objet : Demande d'Inscription à l'Application Wraaqi
@@ -63,7 +64,7 @@ const PDFComponent = () => {
   - Tel : ${tel}\n
   - Adresse Email : ${email}\n
   
-  Motivation de l'Inscription :\n
+  Motivation de l'Inscription :
   Je suis motivé(e) à m'inscrire à votre application afin de bénéficier des services administratifs offerts aux citoyens marocains. Je suis convaincu(e) que cette plateforme facilitera mes démarches administratives, contribuant ainsi à une meilleure accessibilité aux services publics.\n
   
   Engagement :\n
@@ -75,25 +76,36 @@ const PDFComponent = () => {
   `;
 
   return (
-    <div className='font-GS'>
-      <div className='text-[28px] font-semibold'>Demande d'inscription au Wraaqi</div>
-      <h2>Objet : Demande d'Inscription à l'Application Wraaqi</h2>
-      <p> Madame, Monsieur,<br/><br/>
-        Je me permets de vous adresser la présente demande d'inscription à votre application administrative,
-        dans le but de profiter des services mis à disposition pour les citoyens marocains.</p>
-      <div className='flex flex-col'>
-        <div>Informations Personnelles</div>
-        <div>-First Name: {user.firstName}</div>
-        <div>-Last Name: {user.lastName}</div>
-        <div>-Email: {user.email}</div>
-        <div>-CIN: {user.cin}</div>
-        <div>-Nationnalité: {user.nationality}</div>
-      </div>
-      <PDFDownloadLink document={<MyDoc title={title} content={content} />} fileName="demande_inscription.pdf">
+    <div className='font-GS font-size-15 flex flex-col justify-center items-center bg-gray-100 p-4 h-[100vh]  border rounded-lg  font-weight-00'>
+      <div className='text-[28px] font-semibold color-blue underline flex justify-center text-[#ffc02b]'>Demande d'inscription au Wraaqi</div>
+          <div className='mx-[5rem]'>
+            <h2 className='font-semibold underline'><br/>Objet : Demande d'Inscription à l'Application Wraaqi</h2><br/>
+            <p> Madame, Monsieur,<br/>
+              Je me permets de vous adresser la présente demande d'inscription à votre application administrative,
+              dans le but de profiter des services mis à disposition pour les citoyens marocains.</p>
+            <div className='flex flex-col'><br/>
+              <div className=" underline font-semibold">Informations Personnelles :</div><br/>
+              <div>*First Name: {user.firstName}</div>
+              <div>*Last Name: {user.lastName}</div>
+              <div>*Email: {user.email}</div>
+              <div>*CIN: {user.cin}</div>
+              <div>*Nationnalité: {user.nationality}</div>
+              <div>*Email: {user.email}</div>
+              <div>*tel: 0693884461</div><br/>
+            <p className=" underline font-semibold">Motivation de l'Inscription :</p><br/>
+            <p> Je suis motivé(e) à m'inscrire à votre application afin de bénéficier des services administratifs offerts aux citoyens marocains. Je suis convaincu(e) que cette plateforme facilitera mes démarches administratives, contribuant ainsi à une meilleure accessibilité aux services publics.</p><br/>
+            <p className=" underline font-semibold"> Engagement :</p><br/>
+            <p>  Je reste à votre disposition pour toute information complémentaire et je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.
+            </p>
+          </div> 
+     
+
+      <PDFDownloadLink className='p-1 rounded-full flex justify-center mt-6' document={<MyDoc title={title} content={content} />} fileName="demande_inscription.pdf">
         {({ blob, url, loading, error }) =>
-          loading ? 'Loading document...' : 'Download now!'
+          loading ?  <h1  className='bg-[#ffc02b] w-36 flex item-center justify-center font-medium rounded-lg p-4'>Loading document...!</h1>: <h1 className='bg-[#ffc02b] w-36 flex item-center justify-center font-medium rounded-lg p-4'>Dowload now!</h1>
         }
       </PDFDownloadLink>
+    </div>
     </div>
   );
 };

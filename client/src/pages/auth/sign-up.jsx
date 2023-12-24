@@ -7,7 +7,9 @@ import {
 } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
+import { supabase } from "@/client/supabaseClient";
+import axios from 'axios';
+
 
 
 export function SignUp() {
@@ -20,32 +22,58 @@ export function SignUp() {
   const [nationalite, setNationalite] = useState("");
   const [accdemande,setAccdemande]=useState(false)
   const navigate = useNavigate(); 
-  const onClick = () => {
+  const [profileImg, setProfileImg] = useState("");
+
+
+  const pushUserInfos = () => {
+    UploadSupabase();
     const body = {
-      firstName: firstName,
-      lastName: lastName,
+      firstname: firstName,
+      lastname: lastName,
       email: email,
       cin: cin,
       age: age,
-      nationality: nationalite
+      nationality: nationalite,
+      uniqueId:Math.floor(Math.random() * 1000001)
     };
   
     if (age >= 18) {
       // Assuming you want to store the user information in local storage
       localStorage.setItem("user", JSON.stringify(body));
-  
+
       // If you want to make an API request, uncomment the following code
-      // axios.post("http://localhost:8080/demandeInscription/saveDemandeInscription", body)
-      //   .then(response => {
-      //       console.log("user Added");
-      //       setAccdemande(true)
-      //   })
-      //   .catch((error)=>{
-      //     console.log(error)
-      //   })
+      axios.post("http://localhost:8080/demandeInscription", body)
+        .then(response => {
+            console.log("user Added");
+            setAccdemande(true)
+        })
+        .catch((error)=>{
+          console.log(error)
+        })
   
       // Redirect to the desired page
       navigate("/demandePdf");
+    }
+  };
+
+  const UploadSupabase = async (e) => {
+    const avatarFile = profileImg ; 
+    if (avatarFile) {
+      const { data, error } = await supabase
+        .storage
+        .from('wraaqi')
+        .upload(cin + "/avatar.png", avatarFile, {
+          cacheControl: '3600',
+          upsert: false
+        });
+
+      if (error) {
+        console.error('Error uploading image:', error);
+      } else {
+        console.log('Image uploaded successfully:', data);
+      }
+    } else {
+      console.error('No file selected for upload');
     }
   };
   
@@ -103,7 +131,6 @@ export function SignUp() {
               }}
               onChange={(event) => { setEmail(event.target.value) }}
             />
-
             <Typography variant="small" color="blue-gray" className="-mb-6 font-medium font-CG">
               Code d'identité national
             </Typography>
@@ -143,7 +170,10 @@ export function SignUp() {
               onChange={(event) => { setNationalite(event.target.value) }}
             />
           </div>
-          <Button className="mt-6" fullWidth onClick={onClick}>
+          <div className="flex flex-row items-center">
+              <input type="file" className="mt-6" onChange={(e) => setProfileImg(e.target.files[0])} />
+          </div>  
+          <Button className="mt-6" fullWidth onClick={pushUserInfos}>
             Inscrivez-vous maintenant
           </Button>
           {accdemande?<div className="flex justify-center items-center text-green-500 m-2 text-[14px] font-CG font-semibold">demande envoye par succ!</div>:null}
