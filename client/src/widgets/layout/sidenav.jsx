@@ -70,11 +70,11 @@ export function Sidenav({ brandImg, brandName, routes }) {
               <div className="font-semibold my-3">Support</div>
               <div className="flex flex-row items-center gap-3">
                 <InfoCircledIcon className="text-gray-800"/>
-                <Link to="./help">Help</Link>
+                <Link to="/dashboard/help">Help</Link>
               </div>
               <div className="flex flex-row items-center gap-3">
                 <ExclamationTriangleIcon className="text-gray-800"/>
-                <div>Report</div>
+                <Link to="/dashboard/Report">Report</Link>
               </div>
               <div className="flex flex-row items-center gap-3">
                 <ExitIcon className="text-red-700"/>

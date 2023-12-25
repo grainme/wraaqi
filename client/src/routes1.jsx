@@ -12,6 +12,8 @@ import HomeCitoyen from "./pages/dashboard/home_citoyen";
 import { Reclamation } from "./pages/dashboard/reclamation";
 import Legalisation from "./pages/dashboard/legalisation";
 import CitoyenRequests from "./pages/dashboard/Requests";
+import Report from "./pages/dashboard/report";
+import Help from "./pages/dashboard/help";
   
   const icon = {
     className: "w-5 h-5 text-inherit",
@@ -43,14 +45,25 @@ import CitoyenRequests from "./pages/dashboard/Requests";
           icon: <InformationCircleIcon {...icon} />,
           name: "legalisation",
           path: "/legalisation",
-          element: <Legalisation />, // Legalisation Component
+          element: <Legalisation />, 
         },
         {
           icon: <InformationCircleIcon {...icon} />,
           name: "Requests",
           path: "/Requests",
           element: <CitoyenRequests/>,
-        }
+        },
+        {
+          icon: <InformationCircleIcon {...icon} />,
+          name: "help",
+          path: "/help",
+          element: <Help />,
+        },
+  
+        {icon: <InformationCircleIcon {...icon} />,
+        name: "Report",
+        path: "/Report",
+        element: <Report />},
       ],
     },
     {

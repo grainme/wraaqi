@@ -28,42 +28,51 @@ export function CitoyenRequests() {
   console.log(demandes);
 
   return (
-    <div className="flex justify-center items-center">
-      <table className="min-w-full bg-white border border-gray-300">
+    <div className="flex flex-col justify-center items-center">
+      <div className="text-[40px] font-CG font-semibold mt-2">Previous Requests</div>
+      <table className="min-w-full bg-white border border-gray-300 mt-8 shadow-md font-GS">
         <thead className="bg-gray-100">
           <tr>
-            <th className="py-2 px-4 text-left">Name</th>
-            <th className="py-2 px-4 text-left">Date</th>
-            <th className="py-2 px-4 text-left">Status</th>
-
-            <th className="py-2 px-4 text-left">Response</th>
-            <th className="py-2 px-4 text-left">Type</th>
+            <th className="py-3 px-4 text-left font-semibold text-gray-700">
+              Name
+            </th>
+            <th className="py-3 px-4 text-left font-semibold text-gray-700">
+              Date
+            </th>
+            <th className="py-3 px-4 text-left font-semibold text-gray-700">
+              Status
+            </th>
+            <th className="py-3 px-4 text-left font-semibold text-gray-700">
+              Response
+            </th>
+            <th className="py-3 px-4 text-left font-semibold text-gray-700">
+              Type
+            </th>
           </tr>
         </thead>
         <tbody>
-          {demandes.map((demande, index) => {
-            return (
+          {demandes.map(
+            (demande, index) =>
               demande.demendeDate !== null &&
               demande.type !== null && (
                 <tr key={index} className="hover:bg-gray-50">
-                  <td className="py-2 px-4">{demande.name}</td>
-                  <td className="py-2 px-4">
+                  <td className="py-3 px-4">{demande.name}</td>
+                  <td className="py-3 px-4">
                     {format(
                       new Date(demande.demendeDate),
                       "MMMM d, yyyy HH:mm:ss",
                     )}
-                  </td>{" "}
-                  <td className="py-2 px-4">{demande.status}</td>
-                  <td className="py-2 px-4">
+                  </td>
+                  <td className="py-3 px-4">{demande.status}</td>
+                  <td className="py-3 px-4">
                     {demande.response !== null
                       ? demande.response
                       : "En Cours de traitement"}
                   </td>
-                  <td className="py-2 px-4">{demande.type}</td>
+                  <td className="py-3 px-4">{demande.type}</td>
                 </tr>
-              )
-            );
-          })}
+              ),
+          )}
         </tbody>
       </table>
     </div>

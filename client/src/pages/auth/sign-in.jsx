@@ -30,15 +30,16 @@ export function SignIn() {
           dispatch(plus(response.data.id));
 
           localStorage.setItem('user', JSON.stringify(response.data));
+          console.log(response);  
           
           if (response.data.role === "Citoyen") {
             navigate("/citoyen/home");
-          } else if (response.data.role === "fonctionnaire") {
+          } else if (response.data.role === "Fonctionnaire") {
             navigate("/fonctionnaire/home");
           } else if (response.data.role === "admine communes") {
             navigate("Commune/home");
           } else if (response.data.role === "admine Logiciel") {
-            navigate("/dashboard/home"); // Admin logiciel
+            navigate("/dashboard/home");
           }
         } else {
           console.log("lose");
@@ -94,9 +95,9 @@ export function SignIn() {
 
           <div className="flex items-center justify-between gap-2 mt-6">
             <Typography variant="small" className="font-medium text-gray-900 font-CG">
-              <a href="#">
+              <Link to="/auth/Pwd">
               Mot de passe oublié?
-              </a>
+              </Link>
             </Typography>
           </div> 
           <Typography variant="paragraph" className="text-center text-blue-gray-500 font-medium mt-4 font-CG">

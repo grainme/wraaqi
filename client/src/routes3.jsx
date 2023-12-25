@@ -9,6 +9,7 @@ import {
 import { Home, Profile, Tables, Notifications } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
 import HomeCommune from "./pages/dashboard/home_Commune";
+import Report from "./pages/dashboard/report";
   
   const icon = {
     className: "w-5 h-5 text-inherit",
@@ -42,6 +43,17 @@ import HomeCommune from "./pages/dashboard/home_Commune";
           path: "/notifications",
           element: <Notifications />,
         },
+        {
+          icon: <InformationCircleIcon {...icon} />,
+          name: "help",
+          path: "/help",
+          element: <Help />,
+        },
+  
+        {icon: <InformationCircleIcon {...icon} />,
+        name: "Report",
+        path: "/Report",
+        element: <Report />},
       ],
     },
     {

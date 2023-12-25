@@ -6,6 +6,7 @@ import DashboardCitoyen from "./layouts/dashboardCitoyen";
 import DashboardFonctionnaire from "./layouts/dashboardFonctionnaire";
 import DashboardCommune from "./layouts/dashboardCommune";
 import LegalApp from "./pages/dashboard/LegalApp";
+import Pwd from "./pages/auth/pwd";
 
 function App() {
 
@@ -20,7 +21,6 @@ function App() {
       <Route path="/auth/*" element={<Auth />} /> 
       <Route path="/demandePdf" element={<DemandePdf />} /> 
       <Route path="/test_legal" element={<LegalApp/>}/>
-      
     </Routes>
     
   );

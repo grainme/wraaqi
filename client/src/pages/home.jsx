@@ -20,7 +20,17 @@ export function Home() {
   return (
     <>
       <div className="font-CG relative flex h-screen content-center items-center justify-center pt-16 pb-32 font-switzer">
-        <div className="absolute top-0 h-full w-full bg-[url('/img/Casa.jpg')] bg-cover bg-center"></div>
+        <div className="absolute top-0 h-full w-full  bg-cover bg-center">
+          <video
+            className="absolute top-0 h-full w-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src="/img/casa.mp4" type="video/mp4" />
+          </video>
+        </div>
         <div className="absolute top-0 h-full w-full bg-black/70 bg-cover bg-center">
           <div className="flex flex-grow justify-between items-center text-white m-4 mx-[7rem]">
             <div>
@@ -82,9 +92,9 @@ export function Home() {
           </div>
         </div>
       </div>
-        <section className="-mt-32 bg-white px-4 pb-20 pt-4">
-          <div className="container mx-auto">
-            {/* <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <section className="-mt-32 bg-white px-4 pb-20 pt-4">
+        <div className="container mx-auto">
+          {/* <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {featuresData.map(({ color, title, icon, description }) => (
                 <FeatureCard
                   key={title}
@@ -97,7 +107,7 @@ export function Home() {
                 />
               ))}
             </div> */}
-            <div className="mt-32 flex flex-wrap items-center">
+          <div className="mt-32 flex flex-wrap items-center">
             <div className="mx-auto -mt-8 w-full px-4 md:w-5/12">
               <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-blue-gray-900 p-2 text-center shadow-lg">
                 <QuestionMarkCircleIcon className="h-8 w-8 text-white " />
@@ -241,7 +251,6 @@ export function Home() {
       <div className="bg-white">
         <Footer />
       </div>
-      
     </>
   );
 }

@@ -8,6 +8,9 @@ import {
 } from "@heroicons/react/24/solid";
 import { Home, Profile, Tables, Notifications } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
+import Pwd from "./pages/auth/pwd";
+import Help from "./pages/dashboard/help";
+import Report from "./pages/dashboard/report";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -41,6 +44,19 @@ export const routes = [
         path: "/notifications",
         element: <Notifications />,
       },
+      {
+        icon: <InformationCircleIcon {...icon} />,
+        name: "help",
+        path: "/help",
+        element: <Help />,
+      },
+
+      {
+        icon: <InformationCircleIcon {...icon} />,
+        name: "Report",
+        path: "/Report",
+        element: <Report />,
+      },
     ],
   },
   {
@@ -58,6 +74,12 @@ export const routes = [
         name: "sign up",
         path: "/sign-up",
         element: <SignUp />,
+      },
+      {
+        icon: <RectangleStackIcon {...icon} />,
+        name: "pwd",
+        path: "/pwd",
+        element: <Pwd />,
       },
     ],
   },

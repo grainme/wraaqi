@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/client/supabaseClient";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
+import { Input } from "@material-tailwind/react";
+import { Textarea } from "@material-tailwind/react";
 
 export function Legalisation() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
@@ -64,41 +66,43 @@ export function Legalisation() {
       <div className="relative mt-8 h-[5rem] w-full overflow-hidden rounded-xl bg-cover bg-center">
         <div className="absolute inset-0 h-full w-full bg-transparent" />
       </div>
-      <Card className="mx-3 -mt-16 mb-6 lg:mx-4 border border-blue-gray-100">
-        <CardBody className="p-4">
-          <div className="gird-cols-1 mb-12 grid gap-12 px-4 lg:grid-cols-2 xl:grid-cols-3">
-            <div>
+      <Card className="mx-3 -mt-16 mb-6 h-[35rem] flex justify-between items-center border border-blue-gray-100">
+        <CardBody className="p-4 flex flex-col justify-center items-center">
+          <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col justify-center items-center">
               <Typography
-                variant="h4"
                 color="blue-gray"
-                className="mb-3 font-CG"
+                className="mb-3 font-CG font-semibold text-[100px]"
               >
                 Legalisation Window
               </Typography>
-              <div className="flex flex-col gap-5">
-                <div className="flex flex-row gap-5">
+              <div className="flex flex-col gap-5 justify-between h-[17rem] w-[40rem]">
+                <div className="flex flex-col gap-5 justify-between">
                   <div>
-                    <div className="font-GS font-semibold text-[12px]">
+                    <div className="font-GS font-medium mb-2 text-[12px]">
                       Upload file to legalise it!
                     </div>
-                    <input
+                    <Input
                       type="file"
-                      className="bg-transparent border-2 pr-10 pl-2 py-1 rounded-lg"
+                      className=" bg-white text-gray-900  ring-4 ring-transparent placeholder:text-gray-500 "
                       onChange={(e) => setFile(e.target.files[0])}
-                    ></input>
+                      containerProps={{ className: "min-w-[100px]" }}
+                    />
                   </div>
                   <div>
-                    <div className="font-GS font-semibold text-[12px]">
+                    <div className="font-GS font-medium mb-2 text-[12px]">
                       Why do you want to legalize it?
                     </div>
-                    <input
+                    <Textarea
                       type="text"
-                      className="bg-transparent border-2 pr-10 pl-2 py-1 rounded-lg"
+                      className=" bg-white text-gray-900  ring-4 ring-transparent placeholder:text-gray-500 "
                       onChange={(e) => setDescription(e.target.value)}
-                    ></input>
+
+                      containerProps={{ className: "min-w-[100px]" }}
+                    />
                   </div>
                 </div>
-                <div onClick={sendLegalisation} className="cursor-pointer">
+                <div onClick={sendLegalisation} className="flex justify-center font-CG font-semibold text-[17px] items-center cursor-pointer">
                   Submit Legalisation
                 </div>
               </div>
