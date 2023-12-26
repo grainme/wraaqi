@@ -41,12 +41,24 @@ export function Pwd() {
     } else if (bottonContent == "change password") {
       if (npassword == confirmPassword) {
         axios
-          .post("http://localhost:8080/users/", body)
+          .get(`http://localhost:8080/user/findByEmail/${email}`)
           .then((res) => {
-            setBottonContent("send the code");
+            console.log(res.data)
+            axios
+              .put("http://localhost:8080/user/updateUser", {
+                ...res.data,
+                "password": npassword
+              })
+              .then((res) => {
+                console.log(res.data);
+                navigate("/auth/sign-in")
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           })
-          .catch((err) => {
-            console.log(err);
+          .catch((error) => {
+            console.log(error);
           });
       }
     }

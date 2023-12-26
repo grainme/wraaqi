@@ -25,7 +25,7 @@ export function Legalisation() {
   }, []);
 
   const sendLegalisation = () => {
-    UploadSupabase();
+    
     axios
       .post("http://localhost:8080/demandeLegalisation/saveDocu", {
         fileContent: File.name,
@@ -34,14 +34,15 @@ export function Legalisation() {
         uniqueId: Math.floor(Math.random() * 1000001),
       })
       .then((response) => {
-        console.log(response);
+        // console.log(response.data.fonctionnaire.user);
+        UploadSupabase(response.data.fonctionnaire.user);
       })
       .catch((error) => {
         console.error("Kin chi Error somewhere fl CLOUD akhay!", error);
       });
   };
 
-  const UploadSupabase = async (e) => {
+  const UploadSupabase = async (user) => {
     const avatarFile = File;
     if (avatarFile) {
       const { data, error } = await supabase.storage
@@ -97,7 +98,7 @@ export function Legalisation() {
                       type="text"
                       className=" bg-white text-gray-900  ring-4 ring-transparent placeholder:text-gray-500 "
                       onChange={(e) => setDescription(e.target.value)}
-
+                      value={description}
                       containerProps={{ className: "min-w-[100px]" }}
                     />
                   </div>

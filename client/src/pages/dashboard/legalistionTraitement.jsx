@@ -23,10 +23,10 @@ export default function LegalisationTraitement() {
   };
 
   const getPdfFromSupabase = async () => {
-    console.log("PDF : ", pdf);
+    const fonctionnaire=pdf.fonctionnaire; 
     const { data, error } = supabase.storage
       .from("wraaqi")
-      .getPublicUrl(pdf.fonctionnaire.user.cin + "/documents" + "/" + pdf.fileContent);
+      .getPublicUrl(fonctionnaire.user.cin + "/documents" + "/" + pdf.fileContent);
     setPublicUrl(data);
     if (error) {
       console.error("Error uploading File:", error);
@@ -117,7 +117,7 @@ export default function LegalisationTraitement() {
 
         {result && <p className="text-green-500">Result: {result}</p>}
 
-        {pdf && (
+        {publicUrl && (
           <div className="mt-4">
             <iframe
               src={pdf ? publicUrl.publicUrl : ""}

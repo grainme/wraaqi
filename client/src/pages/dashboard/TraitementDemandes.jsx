@@ -54,15 +54,14 @@ export function TraitementDemandes() {
         <tbody>
           {demandes.map((demande, index) => {
             return (
-              demande.type !== null && (
                 <tr key={index} className="hover:bg-gray-50 font-GS font-medium">
                   <td className="py-2 px-4 flex flex-row gap-3 items-center justify-start">
                     <div onClick={()=>{navigate(`../checkProfile?id=${demande.user.id}`);}} className="cursor-pointer font-medium flex flex-col">
-                      <div>{demande.user?.firstname} {demande.user?.lastname}</div>
+                      <div>{demande.user !== null ? demande.user?.firstname + " " + demande.user?.lastname : "Still Unknown"}</div>
                       <div className="text-[13px] font-GS text-gray-700">{demande.user?.role}</div>
                     </div>
                   </td>
-                  <td className="py-2 px-4">{demande.type}</td>
+                  <td className="py-2 px-4">{demande.type === null ? "Inscription" : demande.type}</td>
                   <td className="py-2 px-4">{demande.status}</td>
                   <td className="py-2 px-4">
                     <button
@@ -76,7 +75,6 @@ export function TraitementDemandes() {
                   </td>
                 </tr>
               )
-            );
           })}
         </tbody>
       </table>

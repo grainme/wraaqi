@@ -25,7 +25,7 @@ export default function InscriptionTraitement() {
 
     axios
       .get(
-        `http://localhost:8080/demandeInscription/findDemandByUniqueId/${id}`,
+        `http://localhost:8080/demandeInscription/findByuniqueId/${id}`,
       )
       .then((res) => {
         setInscription(res.data);
